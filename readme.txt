@@ -1,10 +1,14 @@
-# Software description:
+MAOS-TSP
+========
+
 Multiagent Optimization System (MAOS): the Mini Subseries for solving
-Numerical Optimization and Combinatorial Optimization Problems
+Combinatorial Optimization Problems
 
 --> current version: The mini Series V1.00.03
 
-# License description:
+License description
+-------------------
+
  *******************************************************************
  * MAOS is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License
@@ -19,14 +23,20 @@ Numerical Optimization and Combinatorial Optimization Problems
  * Please acknowledge the author(s) if you use this code in any way.
  *******************************************************************
 
-# A Simple Start
+A Simple Start
+--------------
+
 Enter the directory "myprojects", then run the file "examples.bat".
 
-# Reference
+Reference
+---------
+
 [1] Xiao-Feng Xie, Jiming Liu. Multiagent optimization system for solving the
     traveling salesman problem (TSP). IEEE Transactions on Systems, Man, and 
     Cybernetics - Part B, 2009, 39(2): 489-502 
 
-# General information
+General information
+-------------------
+
 Portal: http://www.wiomax.com/maos-tsp
 E-MAIL: xie@wiomax.com
