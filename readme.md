@@ -2,9 +2,9 @@ MAOS-TSP
 ========
 
 Multiagent Optimization System (MAOS): the Mini Subseries for solving
-Combinatorial Optimization Problems
+Combinatorial Optimization Problems.
 
---> current version: The mini Series V1.00.03
+Current version: The mini Series V1.00.03
 
 License description
 -------------------
