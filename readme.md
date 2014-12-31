@@ -1,8 +1,7 @@
 MAOS-TSP
 ========
 
-Multiagent Optimization System (MAOS): the Mini Subseries for solving
-Combinatorial Optimization Problems.
+Multiagent Optimization System (MAOS) for solving the traveling salesman problem (TSP).
 
 Current version: The mini Series V1.00.03
 
