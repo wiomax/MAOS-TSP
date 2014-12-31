@@ -1,0 +1,109 @@
+/**
+ * The Prim's Algorithm obtains a minimum spanning tree.
+ *
+ * @ Author        Create/Modi     Note
+ * Keld Helsgaun   Jun XX, 2002
+ * Xiaofeng Xie    May 21, 2005
+ * Xiaofeng Xie    Apr 28, 2006    MAOS-TSP Beta 1.1.002
+ * Xiaofeng Xie    Aug 21, 2008    MAOS M01.00.00
+ *
+ * @version M01.00.00
+ * @since M01.00.00
+ * 
+ * [1] K. Helsgaun,"An Effective Implementation of the Lin-Kernighan Traveling
+ *  Salesman Heuristic", European J Operational Research 126 (1), 106-130 (2000).
+ * [2] R. C. Prim: Shortest connection networks and some generalizations. 
+ *     In: Bell System Technical Journal, 36 (1957), pp. 1389Ð1401
+ */
+
+package implement.TSP.knowledge;
+
+import java.util.*;
+import Global.methods.*;
+import Global.basic.data.matrix.*;
+
+public class PrimeMSTSolver implements IGetSpanningTreeEngine {
+  private boolean[] usedFlagSet;
+
+  public PrimeMSTSolver(int nodeNumber) {
+    usedFlagSet = new boolean[nodeNumber];
+  }
+
+  /**
+  * @ very slow
+  * @ Should be improved by binary heap in O(E*log(V)) or Fibonacci heap in O(E + V log V)
+  *
+  * Step 0: Pick any vertex as a starting vertex. (Call it S). Mark it with any
+  *  given colour, say red.
+  * Step 1:  Find the nearest neighbour of S (call it P1). Mark both P1 and the
+  *  edge SP1 red. cheapest unmarked (uncoloured) edge in the graph that doesn't
+  *  close a coloured circuit. Mark this edge with same colour of Step 1.
+  * Step 2  Find the nearest uncoloured neighbour to the red subgraph (i.e., the
+  *  closest vertex to any red vertex). Mark it and the edge connecting the vertex
+  *  to the red subgraph in red.
+  * Step 3 Repeat Step 2 until all vertices are marked red. The red subgraph is a
+  *  minimum spanning tree.
+  */
+  /*
+  Prim with heaps:
+  make a heap of values (vertex,edge,weight(edge))
+      initially (v,-,infinity) for each vertex
+      let tree T be empty
+  while (T has fewer than n vertices)
+  {
+      let (v,e,weight(e)) have the smallest weight in the heap
+      remove (v,e,weight(e)) from the heap
+      add v and e to T
+      for each edge f=(u,v)
+      if u is not already in T
+          find value (u,g,weight(g)) in heap
+          if weight(f) < weight(g)
+          replace (u,g,weight(g)) with (u,f,weight(f))
+  }
+*/
+
+  public double getSpanningTree(SpanningTree spanningTree, ISquareIMatrixEngine costMatrix) {
+    Arrays.fill(usedFlagSet, false);
+
+    int n = costMatrix.getNodeNumber();
+
+    double small;
+    double length, minLength = 0;
+    int parentID = 0, currID = 0;
+
+    /* select arbitrary point as starting point */
+    int usedID = RandomGenerator.intRangeRandom(n);
+    usedFlagSet[usedID] = true;
+    spanningTree.setRootNode(usedID);
+
+    int count = 1;
+    int i, j;
+    while (count < n) {
+      small = Double.MAX_VALUE;
+
+      for (i = 0; i < n; i++) {
+        if (usedFlagSet[i]) {
+          for (j = 0; j < n; j++) {
+            if (!usedFlagSet[j]) {
+              length = costMatrix.getValueAt(i, j);
+
+              if (length < small) {
+                small = length;
+                parentID = i;
+                currID = j;
+              }
+            }
+          }
+        }
+      }
+
+      spanningTree.addLink(currID, parentID);
+      usedFlagSet[currID] = true;
+
+      minLength += small;
+      count++;
+    }
+    return minLength;
+  }
+}
+
