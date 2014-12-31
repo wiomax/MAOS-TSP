@@ -3,7 +3,7 @@ MAOS-TSP
 
 Multiagent Optimization System (MAOS) for solving the traveling salesman problem (TSP).
 
-Current version: The mini Series V1.00.03
+- Current version: The mini Series V1.00.03
 
 License description
 -------------------
