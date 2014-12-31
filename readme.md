@@ -37,4 +37,4 @@ General information
 -------------------
 
 Portal: http://www.wiomax.com/maos-tsp
-E-MAIL: xie@wiomax.com
+E-MAIL: info@wiomax.com
