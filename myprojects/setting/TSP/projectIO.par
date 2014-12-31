@@ -1,0 +1,11 @@
+#Default setting file, in format [name=value]
+#########################################################
+#For instance input
+defaultProblemSuffixes=.tsp
+
+#For solution output
+solutionSuffix=.tour
+
+#For runtime results output
+#ResHOME=results
+

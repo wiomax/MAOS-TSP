@@ -1,0 +1,9 @@
+[LS_REFINER]
+-P nItemTour < ItemPicker: nTour
+
+-D StateRepairer < implement.common.behavior.elemPick.decrement.RndDecNodePicker
+
+-D ItemPicker < implement.common.behavior.elemPick.increment.candidatePick.clueBased.pick.TourClueElemPicker: nTour=1
+
+-D StateImprover < implement.common.behavior.elemPick.increment.BasicIncNodePicker: clueAssigner=%CostAssigner,cluePicker=&ItemPicker
+-D LS_REFINER < implement.common.behavior.refine.DirectREPIMPRefiner: repairer=&StateRepairer,improver=&StateImprover

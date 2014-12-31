@@ -1,0 +1,28 @@
+[MLS_MFS_Imp]
+
+-P LI < MLS_MFS_Imp:LI
+
+-D R_Order < maosKernel.behavior.greedy.orderSel.QrandOrderSelectModel
+-D R_ROUND < maosKernel.behavior.greedy.roundLevel.FullScanLSLevelRoundPolicy: orderPolicy=&R_Order
+-D R_TwoL < maosKernel.behavior.greedy.instance.TwoLevelLocalSearch: nodePolicy=%R_NODE, roundPolicy=&R_ROUND
+
+-D MLS_MFS_Imp < maosKernel.behavior.greedy.meta.ImpRepeatLocalSearch: LI=MAXI, kernelLS=&R_TwoL
+
+[MLS_MRS_Fix]
+
+-P Lc < MLS_MRS_Fix:Lc
+
+-D R_Order < maosKernel.behavior.greedy.orderSel.QrandOrderSelectModel
+-D R_ROUND < maosKernel.behavior.greedy.roundLevel.ReScanLSLevelRoundPolicy: orderPolicy=&R_Order
+-D R_TwoL < maosKernel.behavior.greedy.instance.TwoLevelLocalSearch: nodePolicy=%R_NODE, roundPolicy=&R_ROUND
+
+-D MLS_MRS_Fix < maosKernel.behavior.greedy.meta.FixRepeatLocalSearch: Lc=MAXI, kernelLS=&R_TwoL
+
+[MLS_MFS_Fix]
+
+-P Lc < MLS_MFS_Fix:Lc
+-D R_Order < maosKernel.behavior.greedy.orderSel.QrandOrderSelectModel
+-D R_ROUND < maosKernel.behavior.greedy.roundLevel.FullScanLSLevelRoundPolicy: orderPolicy=&R_Order
+-D R_TwoL < maosKernel.behavior.greedy.instance.TwoLevelLocalSearch: nodePolicy=%R_NODE, roundPolicy=&R_ROUND
+
+-D MLS_MFS_Fix < maosKernel.behavior.greedy.meta.FixRepeatLocalSearch: Lc=2, kernelLS=&R_TwoL

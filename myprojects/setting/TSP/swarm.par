@@ -1,0 +1,5 @@
+#Default setting file, in format [name=value]
+#########################################################
+
+#Misc
+solver=STD_PRB_3Opt_REAX

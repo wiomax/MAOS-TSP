@@ -1,0 +1,18 @@
+#Default setting file, in format [name=value]
+#########################################################
+
+#Swarm parameters
+N=100
+Nact=-1
+
+#For the termination condition
+T=500
+Tcon=-1
+
+#Misc
+DUP_TIMES=2
+Tout=10
+
+#Knowledge components
+topology=FullConnect
+solver=default

@@ -1,0 +1,17 @@
+
+[LS_NODE_VD]
+-D R_ReferSel < maosKernel.behavior.greedy.referSel.BestImpReferSelectModel
+-D LS_NODE_VD < maosKernel.behavior.greedy.nodeLevel.BasicLSLevelNodePolicy: basic1Mover=%R_1Mover, referSelector=&R_ReferSel
+
+[LS_MRS_ALL]
+
+-D R_Order < maosKernel.behavior.greedy.orderSel.QrandOrderSelectModel
+-D R_ROUND < maosKernel.behavior.greedy.roundLevel.ReScanLSLevelRoundPolicy: orderPolicy=&R_Order
+-D R_TwoL < maosKernel.behavior.greedy.instance.TwoLevelLocalSearch: nodePolicy=%R_NODE, roundPolicy=&R_ROUND
+
+-D LS_MRS_ALL < maosKernel.behavior.greedy.meta.FixRepeatLocalSearch: Lc=MAXI, kernelLS=&R_TwoL
+
+[LS_FSP_MRS_VD]
+
+-L R_NODE < LS_FSP_NODE_VD@LSModules
+-L LS_FSP_MRS_VD < LS_MRS_ALL@LSModules: R_NODE=&R_NODE

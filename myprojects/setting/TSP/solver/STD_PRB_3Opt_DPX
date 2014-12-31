@@ -1,0 +1,16 @@
+-D R_COST < implement.TSP.behavior.misc.CostMatrixHandler: isAlpha=false,isPI=false
+-D R_NN < implement.TSP.behavior.neighbor.NearNeighborManager:Knni=20,Knnm=MAXI,costMatrix=&R_COST
+
+-D R_LS < implement.TSP.behavior.greedy.Basic3OPT: bit_Ratio=0.00,neighborEngine=&R_NN
+
+-D R_SS < implement.TSP.behavior.construct.ReverseProbConstructor:neighborEngine=&R_NN
+
+-D R_INI < maosKernel.behavior.scratch.LinkedScratchSearch:scratchSearch=&R_SS, incumbentSearch=&R_LS
+
+-L R_T < RT_BETTER@KernelRTModules
+
+-D R_XS < implement.TSP.behavior.combine.DPXSearcher 
+
+-D R_FS <  maosKernel.behavior.combine.FusionSearch:recombinationSearch=%R_XS, localSearch=%R_LS
+
+-L R_G < RG_RSP_XS@KernelRGModules:R_XS=&R_FS

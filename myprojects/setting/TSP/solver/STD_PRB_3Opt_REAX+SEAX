@@ -1,0 +1,23 @@
+-P isAlpha < R_COST:isAlpha
+-P isPI < R_COST:isPI
+-P Nmtm1 < R_XS1:Nmtm
+-P Nmtm2 < R_XS2:Nmtm
+
+-D R_COST < implement.TSP.behavior.misc.CostMatrixHandler: isAlpha=false,isPI=false
+-D R_NN < implement.TSP.behavior.neighbor.NearNeighborManager:Knni=20,Knnm=MAXI,costMatrix=&R_COST
+
+-D R_LS < implement.TSP.behavior.greedy.Basic3OPT: bit_Ratio=0.00,neighborEngine=&R_NN
+
+-D R_SS < implement.TSP.behavior.construct.ReverseProbConstructor:neighborEngine=&R_NN
+
+-D R_INI < maosKernel.behavior.scratch.LinkedScratchSearch:scratchSearch=&R_SS, incumbentSearch=&R_LS
+
+-L R_T < RT_BETTER@KernelRTModules
+
+-D R_XS1 < implement.TSP.behavior.combine.eax.RandEAXRecombinator: neighborEngine=&R_NN,Cd=1.0,Nmtm=20,nABCycle=100 
+-D R_XS2 < implement.TSP.behavior.combine.eax.SortEAXRecombinator: neighborEngine=&R_NN,Cd=1.0,Nmtm=10,nABCycle=100 
+
+-L R_G1 < RG_RSP_XS@KernelRGModules:R_XS=&R_XS1
+-L R_G2 < RG_RSP_XS@KernelRGModules:R_XS=&R_XS2
+
+-D R_G < maosKernel.behavior.generate.Switch2MGenerator: nScaleA=1, nScaleB=1, GeneratorA=&R_G1, GeneratorB=&R_G2

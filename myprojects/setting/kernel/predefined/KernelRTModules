@@ -1,0 +1,5 @@
+[OneLine]
+
+-D RT_DIRECT < maosKernel.behavior.update.DirectStateUpdater
+-D RT_BETTER < maosKernel.behavior.update.BetterStateUpdater
+

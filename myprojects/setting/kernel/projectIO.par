@@ -1,0 +1,12 @@
+#Default setting file, in format [name=value]
+#########################################################
+#For instance input
+defaltRootProjectPath=tasks
+defaultProblemSuffixes=.txt|.dat
+
+#For solution output
+solutionSuffix=.sln
+OptimumFlags=.opt
+
+#For runtime results
+ResHOME=results

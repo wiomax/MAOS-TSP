@@ -1,0 +1,9 @@
+-P pRandom < R_CS:pRandom
+
+-D R_INI < maosKernel.behavior.scratch.RandConstructiveSearch
+
+-L R_T < RT_BETTER@KernelRTModules
+
+-D R_CS < implement.TSP.behavior.complex.InverOverSearcher: pRandom = 0.01
+
+-D R_G < maosKernel.behavior.generate.MiniSBILCGenerator: complexSearch=%R_CS

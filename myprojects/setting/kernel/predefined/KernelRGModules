@@ -1,0 +1,14 @@
+[RG_CS]
+
+-D RG_CS < maosKernel.behavior.generate.MiniSBILCGenerator: complexSearch=%R_CS
+
+[RG_RSP_XS]
+
+-D RStatePicker < maosKernel.behavior.pick.RandStatePicker
+-D RG_RSP_XS < maosKernel.behavior.generate.MiniSBILXGenerator: recombinationSearch=%R_XS, statePicker=&RStatePicker
+
+[RG_RSP_FS]
+
+-D R_SP < maosKernel.behavior.pick.RandStatePicker
+-D R_FS < maosKernel.behavior.combine.FusionSearch:recombinationSearch=%R_XS, localSearch=%R_LS
+-D RG_RSP_FS < maosKernel.behavior.generate.MiniSBILXGenerator: recombinationSearch=&R_FS, statePicker=&R_SP

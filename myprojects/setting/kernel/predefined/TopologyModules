@@ -1,0 +1,15 @@
+[FullConnectTopology]
+-D FullConnectTopology < maosKernel.topology.FullConnectTopology
+
+[HierarchicalTopology]
+-P height < HierarchicalTopology:height
+-D HierarchicalTopology < maosKernel.topology.HierarchicalTopology:height=2
+
+[StdRatioEdgeTopology]
+-P locRatio < StdRatioEdgeTopology:locRatio
+-P intervalCycle < StdRatioEdgeTopology:intervalCycle
+StdRatioEdgeTopology < maosKernel.topology.EdgeRatioTopology:locRatio=0.1,intervalCycle=MAXI
+
+[DynamicRingTopology]
+-P intervalCycle < StdRatioEdgeTopology:intervalCycle
+DynamicRingTopology < maosKernel.topology.RingTopology:intervalCycle=1

@@ -1,0 +1,36 @@
+FullConnect < maosKernel.behavior.topology.FullConnectTopology
+
+StdHetero < maosKernel.behavior.topology.HeterogeneousTopology: intervalCycle=1, ratio=1.0
+
+Hierarchical2 < maosKernel.behavior.topology.HierarchicalTopology:height=2
+Hierarchical3 < maosKernel.behavior.topology.HierarchicalTopology:height=3
+Hierarchical4 < maosKernel.behavior.topology.HierarchicalTopology:height=4
+
+StdMD2R0.00 < maosKernel.behavior.topology.MultiDemeTopology:demeNumber=2,chaosRatio=0.00,intervalCycle=MAXI
+StdMD2R0.01 < maosKernel.behavior.topology.MultiDemeTopology:demeNumber=2,chaosRatio=0.01,intervalCycle=MAXI
+StdMD5R0.00 < maosKernel.behavior.topology.MultiDemeTopology:demeNumber=5,chaosRatio=0.00,intervalCycle=MAXI
+StdMD5R0.01 < maosKernel.behavior.topology.MultiDemeTopology:demeNumber=5,chaosRatio=0.01,intervalCycle=MAXI
+
+StdFixEdge < maosKernel.behavior.topology.FixEdgeTopology:locNumber=-1,intervalCycle=MAXI
+StdFixEdge5 < maosKernel.behavior.topology.FixEdgeTopology:locNumber=-1,intervalCycle=5
+StdFixEdge1 < maosKernel.behavior.topology.FixEdgeTopology:locNumber=-1,intervalCycle=1
+
+StdRatioEdge0.1 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.1,intervalCycle=MAXI
+StdRatioEdge0.2 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.2,intervalCycle=MAXI
+StdRatioEdge0.3 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.3,intervalCycle=MAXI
+StdRatioEdge0.4 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.4,intervalCycle=MAXI
+StdRatioEdge0.5 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.5,intervalCycle=MAXI
+StdRatioEdge0.6 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.6,intervalCycle=MAXI
+StdRatioEdge0.7 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.7,intervalCycle=MAXI
+StdRatioEdge0.8 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.8,intervalCycle=MAXI
+StdRatioEdge0.9 < maosKernel.behavior.topology.EdgeRatioTopology:locRatio=0.9,intervalCycle=MAXI
+
+DualRingStd < maosKernel.behavior.topology.DualRingTopology:intervalCycle=1
+DualRingFix < maosKernel.behavior.topology.DualRingTopology:intervalCycle=MAXI
+
+RingStd < maosKernel.behavior.topology.RingTopology:intervalCycle=1
+Ring02 < maosKernel.behavior.topology.RingTopology:intervalCycle=2
+Ring05 < maosKernel.behavior.topology.RingTopology:intervalCycle=5
+
+VNStd < maosKernel.behavior.topology.VonNeumannTopology:intervalCycle=MAXI,rowNumber=-1,colNumber=-1
+VN005006 < maosKernel.behavior.topology.VonNeumannTopology:intervalCycle=MAXI,rowNumber=5,colNumber=6
