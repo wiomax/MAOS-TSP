@@ -15,8 +15,8 @@ as published by the Free Software Foundation; either version
 
 MAOS is distributed in the hope that it will be useful, but 
 WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Lesser General Public License 3.0 for more details.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+See the [GNU Lesser General Public License 3.0] (https://www.gnu.org/licenses/lgpl.html) for more details.
 
 Please acknowledge the author(s) if you use this code in any way.
 
