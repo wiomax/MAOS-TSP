@@ -12,8 +12,8 @@ See the [GNU Lesser General Public License 3.0] (https://www.gnu.org/licenses/lg
 
 Please acknowledge the author(s) if you use this code in any way.
 
-A Simple Start
---------------
+Quick Start
+-----------
 
 Enter the directory "myprojects", then run the file "examples.bat".
 
