@@ -12,7 +12,7 @@ See the [GNU Lesser General Public License 3.0] (https://www.gnu.org/licenses/lg
 
 Please acknowledge the author(s) if you use this code in any way.
 
-Quick Start
+Quick start
 -----------
 
 Enter the directory "[myprojects](https://github.com/wiomax/MAOS-TSP/tree/master/myprojects)", then run the file "examples.bat".
