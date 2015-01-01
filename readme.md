@@ -15,7 +15,7 @@ Please acknowledge the author(s) if you use this code in any way.
 Quick Start
 -----------
 
-Enter the directory "myprojects", then run the file "examples.bat".
+Enter the directory "[myprojects](https://github.com/wiomax/MAOS-TSP/tree/master/myprojects)", then run the file "examples.bat".
 
 Reference
 ---------
