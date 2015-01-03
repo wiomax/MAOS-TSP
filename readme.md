@@ -20,9 +20,7 @@ Enter the directory "[myprojects](https://github.com/wiomax/MAOS-TSP/tree/master
 Reference
 ---------
 
-[1] Xiao-Feng Xie, Jiming Liu. Multiagent optimization system for solving the
-    traveling salesman problem (TSP). IEEE Transactions on Systems, Man, and 
-    Cybernetics - Part B, 2009, 39(2): 489-502 
+[1] Xiao-Feng Xie, Jiming Liu. Multiagent optimization system for solving the traveling salesman problem (TSP). IEEE Transactions on Systems, Man, and Cybernetics - Part B, 2009, 39(2): 489-502 
 
 General information
 -------------------
