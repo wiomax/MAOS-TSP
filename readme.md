@@ -1,7 +1,7 @@
 MAOS-TSP
 ========
 
-Multiagent Optimization System for solving the traveling salesman problem (TSP).
+The multiagent optimization system (MAOS) is a nature-inspired method, which supports cooperative search by the self-organization of a group of compact agents situated in an environment with certain sharing public knowledge. Each agent in MAOS is an autonomous entity with personal declarative memory and behavioral components. Based on a simplified MAOS version, in which each agent manipulates on extremely limited declarative knowledge, some simple and efficient components for solving the traveling salesman problem (TSP) are implemented. The experimental results on two TSP benchmark data sets show that MAOS-TSP [1] is competitive as compared with some state-of-the-art algorithms, including the Lin-Kernighan-Helsgaun (LKH) algorithm, the iterative backbone guided LK algorithm (IBGLK), and the Parallel Hybrid Genetic Algorithm (PHGA), etc.
 
 - Current version: The mini Series V1.00.03 (Java)
 
