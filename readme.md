@@ -8,7 +8,7 @@ The multiagent optimization system (MAOS) is a nature-inspired method, which sup
 License description
 -------------------
 
-See the [GNU Lesser General Public License 3.0] (https://www.gnu.org/licenses/lgpl.html) for more details.
+See the [GNU General Public License 3.0] (https://www.gnu.org/licenses/gpl.html) for more details.
 
 Please acknowledge the author(s) if you use this code in any way.
 
