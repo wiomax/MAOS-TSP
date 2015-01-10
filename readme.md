@@ -5,6 +5,8 @@ The multiagent optimization system (MAOS) is a nature-inspired method, which sup
 
 - Current version: The mini Series V1.00.03 (Java)
 
+It has been tested and solved optimally and quickly for many instances up to 5000 nodes.
+
 License description
 -------------------
 
