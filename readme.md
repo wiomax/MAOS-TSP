@@ -10,7 +10,7 @@ It has been tested and achieved optimal solutions quickly for many large-scale i
 License description
 -------------------
 
-See the [GNU General Public License 3.0] (https://www.gnu.org/licenses/gpl.html) for more details.
+See the [Creative Commons Non-Commercial License 3.0] (https://creativecommons.org/licenses/by-nc/3.0/us/) for more details.
 
 Please acknowledge the author(s) if you use this code in any way.
 
