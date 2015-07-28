@@ -13,7 +13,7 @@
  * @version: see maosKernel.ProductDefinition.java
  * 
  * @License: See the Creative Commons Non-Commercial License 3.0 for more details.
- *					 Please acknowledge the author(s) if you use this code in any way.
+ *           Please acknowledge the author(s) if you use this code in any way.
  *******************************************************************
  *
  * @Reference
