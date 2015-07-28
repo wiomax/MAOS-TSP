@@ -30,29 +30,36 @@
  * [4] Xiao-Feng Xie, Jiming Liu. A mini-swarm for the quadratic knapsack
  *     problem. IEEE Swarm Intelligence Symposium (SIS), Hawaii, USA, 2007.
  * [5] Xiao-Feng Xie, Jiming Liu. Graph coloring by multiagent fusion search. 
- *     Journal of Combinatorial Optimization, In Press.
+ *     Journal of Combinatorial Optimization, 2009, 18(2): 99-123. 
  * [6] Xiao-Feng Xie, Jiming Liu. Multiagent optimization system for solving the traveling 
  *     salesman problem (TSP). IEEE Transactions on Systems, Man, and Cybernetics - Part B, 
  *     2009, 39(2): 489-502 
+ * [7] Xiao-Feng Xie. Round-table group optimization for sequencing problems. International 
+ *     Journal of Applied Metaheuristic Computing, 2012, 3(4): 1-24.
+ * [8] Xiao-Feng Xie, Jiming Liu, Zun-Jing Wang. A cooperative group optimization system. 
+ *     Soft Computing, 2014, 18(3): 469-495.    
  */
 
 package maosKernel;
 
-import java.util.*;
+import java.util.Calendar;
 
-import Global.define.*;
-import Global.util.*;
-import Global.system.*;
-import Global.methods.*;
-import maosKernel.infoIO.*;
-import maosKernel.infoIO.runtime.*;
-import maosKernel.infoIO.setting.*;
-import maosKernel.infoIO.screen.*;
-import maosKernel.infoIO.historical.*;
-import maosKernel.represent.landscape.*;
-import maosKernel.represent.landscape.quality.ICalcGlobalCostEngine;
-import maosKernel.represent.problem.*;
-import maosKernel.behavior.topology.*;
+import maosKernel.behavior.topology.AbsTopology;
+import maosKernel.infoIO.OutputIntervalChecker;
+import maosKernel.infoIO.ResultOutputHandler;
+import maosKernel.infoIO.historical.HistoricalStateHandler;
+import maosKernel.infoIO.runtime.CycleResult;
+import maosKernel.infoIO.screen.MessageTags;
+import maosKernel.infoIO.setting.BasicParamHolder;
+import maosKernel.infoIO.setting.CMDLineProblemSettings;
+import maosKernel.infoIO.setting.SwarmSettings;
+import maosKernel.infoIO.setting.SystemSettingPath;
+import maosKernel.represent.landscape.AbsLandscape;
+import maosKernel.represent.problem.AbsProblemData;
+import Global.define.BasicTag;
+import Global.methods.ObjectMatrix;
+import Global.system.GradedOut;
+import Global.util.GlobalTools;
 
 public final class MAOSExecuter {
 
