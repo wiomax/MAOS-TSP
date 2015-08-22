@@ -17,7 +17,7 @@ Quick start
 
 Execute: Enter the directory "[myprojects](https://github.com/wiomax/MAOS-TSP/tree/master/myprojects)", then run the file "examples.bat".
 
-Compile: Run "ant" to compile, or import "Java Project from Existing Ant Build File" in Eclipse. 
+Compile: Run "ant" to compile, or import "Java Project from Existing Ant Build File" in Eclipse IDE. 
 
 Reference
 ---------
