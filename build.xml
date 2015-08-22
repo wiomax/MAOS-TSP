@@ -56,7 +56,7 @@
 
         <manifest file="${manifest.file}" >
             <attribute name="Main-Class" value="${main.class}" />
-	    <attribute name="Organization" value="http://www.wiomax.com"/>
+	    <attribute name="Provider" value="http://www.wiomax.com"/>
 	    <attribute name="Title" value="MAOS"/>
 	    <attribute name="Author" value="Xiao-Feng Xie"/>
             <attribute name="built-by" value="${user.name}" />
