@@ -228,7 +228,7 @@ public final class MAOSExecuter {
   private AbsMAOSInitializer loadProblemType(String problemType) throws Exception {
     String initializerName = SystemSettingPath.getInitializerName(problemType);
     try {
-      Class cls = Class.forName(initializerName);
+      Class<?> cls = Class.forName(initializerName);
       return (AbsMAOSInitializer)cls.newInstance();
     } catch (Exception e) {
       throw new Exception("Problem type \""+problemType+"\" specified by the first parameter could not be found: "+e.getMessage());

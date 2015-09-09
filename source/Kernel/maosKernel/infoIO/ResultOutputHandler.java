@@ -11,14 +11,14 @@
 
 package maosKernel.infoIO;
 
-import java.io.*;
-import java.util.Vector;
+import java.io.File;
+import java.io.RandomAccessFile;
 
-import Global.system.io.*;
-import Global.define.*;
-import Global.methods.*;
-import maosKernel.infoIO.runtime.*;
-import maosKernel.infoIO.screen.*;
+import maosKernel.infoIO.runtime.CycleResult;
+import maosKernel.infoIO.screen.MessageTags;
+import Global.define.BasicTag;
+import Global.methods.GlobalString;
+import Global.system.io.GlobalFile;
 
 public class ResultOutputHandler {
   String innerTag = "/";

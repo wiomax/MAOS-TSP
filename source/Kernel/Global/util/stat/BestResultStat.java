@@ -72,6 +72,7 @@ public class BestResultStat {
         String[] meaningfulLines = GlobalString.getMeaningfulLines(GlobalFile.getStringFromFile(fileName));
         resultDataFile.writeBytes(meaningfulLines[meaningfulLines.length-1]+"\n");
       }
+      resultDataFile.close();
     }
   }
 

@@ -223,6 +223,9 @@ public class GlobalFile {
     Vector curveData = new Vector();
     curveData.addElement(xaxes);
     curveData.addElement(yaxes);
+    if (inReader!=null) try{
+    	inReader.close();
+    }catch(Exception e){}
     return(curveData);
   }
 
