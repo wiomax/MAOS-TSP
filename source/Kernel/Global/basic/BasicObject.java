@@ -8,9 +8,7 @@
 
 package Global.basic;
 
-import java.io.*;
-
-public abstract class BasicObject extends Object implements Cloneable, Serializable {
+public abstract class BasicObject extends Object implements Cloneable {
 
   public BasicObject getSelf() {
     return this;

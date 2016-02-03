@@ -7,7 +7,7 @@
 
 package Global.basic;
 
-public class IndexedDValue implements Comparable {
+public class IndexedDValue implements Comparable<IndexedDValue> {
   public int index = 0;              //the index
   public double value = 0;           //The value
 
@@ -18,7 +18,7 @@ public class IndexedDValue implements Comparable {
     value = v;
   }
 
-  public int compareTo(Object o) {
+  public int compareTo(IndexedDValue o) {
     IndexedDValue outO = ((IndexedDValue)o);
     if (value<outO.value) return -1;
     else if (value==outO.value) return 0;
