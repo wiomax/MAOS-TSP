@@ -18,7 +18,7 @@ import Global.basic.nodes.utilities.*;
 
 public class UtilSetNode extends AbstractNode implements IShortcutInitEngine, IGetObjectbyNameEngine {
 
-  protected Vector utilites = new Vector(); //BasicUtility[]
+  protected Vector<BasicUtility> utilites = new Vector<BasicUtility>(); //BasicUtility[]
 
   public UtilSetNode() {
   }
@@ -55,12 +55,12 @@ public class UtilSetNode extends AbstractNode implements IShortcutInitEngine, IG
     return utilites.size();
   }
 
-  public Vector getUtilites() {
+  public Vector<BasicUtility> getUtilites() {
     return utilites;
   }
 
-  protected Vector getCopiedUtilities() {
-    Vector newNodes = new Vector();
+  protected Vector<BasicUtility> getCopiedUtilities() {
+    Vector<BasicUtility> newNodes = new Vector<BasicUtility>();
     for(int i=0; i<utilites.size(); i++) {
       BasicUtility util = this.getUtilityAt(i);
       newNodes.add(util.getCopiedUtility());
@@ -68,7 +68,7 @@ public class UtilSetNode extends AbstractNode implements IShortcutInitEngine, IG
     return newNodes;
   }
 
-  public void initUtilities(Vector utils) {
+  public void initUtilities(Vector<BasicUtility> utils) {
     for(int i=0; i<utils.size(); i++) {
       initUtility((BasicUtility)utils.elementAt(i));
     }
@@ -189,7 +189,7 @@ public class UtilSetNode extends AbstractNode implements IShortcutInitEngine, IG
     return utilites.size();
   }
 
-  public void setUtilities(Vector utils) {
+  public void setUtilities(Vector<BasicUtility> utils) {
     for(int i=0; i<utils.size(); i++) {
       BasicUtility util = getUtilityAt(utils, i);
       initUtility(util);
@@ -219,7 +219,7 @@ public class UtilSetNode extends AbstractNode implements IShortcutInitEngine, IG
     return isCovariantValid();
   }
 
-  private static BasicUtility getUtilityAt(Vector utils, int index) {
+  private static BasicUtility getUtilityAt(Vector<BasicUtility> utils, int index) {
     return (BasicUtility)utils.elementAt(index);
   }
 

@@ -1,7 +1,7 @@
 MAOS-TSP
 ========
 
-The multiagent optimization system (MAOS) supports cooperative search by self-organization of multiple agents situated in an environment with certain sharing public knowledge. Each agent in MAOS is an autonomous entity with individual memory and behavioral components. Based on the MAOS framework, some simple yet efficient knowledge components for solving the traveling salesman problem (TSP) are implemented. The experimental results on TSP benchmark data sets show that MAOS-TSP [1] could achieve optimal solutions quickly for large-scale instances, and is competitive as compared with state-of-the-art algorithms. 
+The multiagent optimization system (MAOS) supports the cooperative search by self-organization of multiple agents situated in an environment with certain sharing public knowledge. Each agent in MAOS is an autonomous entity with individual memory and behavioral components. Based on the MAOS framework, some simple yet efficient knowledge components for solving the traveling salesman problem (TSP) are implemented. The experimental results on TSP benchmark data sets show that MAOS-TSP [1] could achieve optimal solutions quickly for large-scale instances, and is competitive as compared with state-of-the-art algorithms. 
 
 - Current version: The mini Series V1.00.04 (Java)
 

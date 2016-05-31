@@ -25,7 +25,7 @@ import Global.math.*;
 
 
 public class EUC_TSPData extends Abs_TSPData {
-  public double[][] tspCOORDData;
+  public double[][] tspCOORDData; //[][2]
   private String[] RECOG_EW_TYPE ={"EUC_2D", "CEIL_2D", "GEO", "ATT"};
   private int index_EDGE_WEIGHT_TYPE = -1;
 
