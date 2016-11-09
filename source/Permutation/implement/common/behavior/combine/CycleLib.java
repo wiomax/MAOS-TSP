@@ -26,7 +26,7 @@ public class CycleLib {
 
   /****************************************************/
   private int maxSize = Integer.MAX_VALUE;
-  private Vector cycleLib = new Vector();
+  private Vector<int[]> cycleLib = new Vector<int[]>();
   private IArray tempCycleArray = null;
 
   public CycleLib(int nodeNumber) {

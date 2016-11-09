@@ -21,8 +21,8 @@ public class ObjectMatrix {
     return newData;
   }
 
-  public static Vector getValidSet(Vector elementSet, Vector freqSet) {
-    Vector validElementSet = new Vector();
+  public static Vector<Object> getValidSet(Vector<Object> elementSet, Vector<Object> freqSet) {
+    Vector<Object> validElementSet = new Vector<Object>();
     for(int i=0; i<elementSet.size(); i++) {
       int freq = ((Integer)freqSet.get(i)).intValue();
       if(freq>0) {
@@ -32,7 +32,7 @@ public class ObjectMatrix {
     return validElementSet;
   }
 
-  public static void transferTo(Vector acceptor, Vector donator) {
+  public static void transferTo(Vector<Object> acceptor, Vector<Object> donator) {
     acceptor.clear();
     acceptor.addAll(donator);
   }
@@ -247,9 +247,9 @@ public class ObjectMatrix {
 /**
  * convert 1D array to vector
  */
-  public static Vector convertArrayTo1DVector(Object[] toToConvert) {
+  public static Vector<Object> convertArrayTo1DVector(Object[] toToConvert) {
     if (toToConvert==null) return null;
-    Vector vec = new Vector();
+    Vector<Object> vec = new Vector<Object>();
     for (int i=0; i<toToConvert.length; i++) {
       vec.addElement(toToConvert[i]);
     }
@@ -259,7 +259,7 @@ public class ObjectMatrix {
 /**
  * convert vector to 1D array
  */
-  public static Object[] convert1DVectorToArray(Vector toToConvert) {
+  public static Object[] convert1DVectorToArray(Vector<Object> toToConvert) {
     if (toToConvert==null) return null;
     Object[] objs = new Object[toToConvert.size()];
     for (int i=0; i<toToConvert.size(); i++) {
@@ -271,7 +271,7 @@ public class ObjectMatrix {
 /**
  * convert vector to 1D String array
  */
-  public static String[] convert1DVectorToStringArray(Vector toToConvert) {
+  public static String[] convert1DVectorToStringArray(Vector<? extends Object> toToConvert) {
     if (toToConvert==null) return null;
     String[] objs = new String[toToConvert.size()];
     for (int i=0; i<toToConvert.size(); i++) {

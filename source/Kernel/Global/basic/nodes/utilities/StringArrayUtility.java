@@ -14,7 +14,7 @@ import Global.methods.*;
 
 public class StringArrayUtility extends StringableUtility {
 
-  public StringArrayUtility(String outName, Vector val) {
+  public StringArrayUtility(String outName, Vector<Object> val) {
     this(outName, GlobalString.serinize(val, "|"));
   }
 

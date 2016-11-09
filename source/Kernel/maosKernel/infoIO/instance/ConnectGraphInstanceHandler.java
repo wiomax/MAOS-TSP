@@ -30,9 +30,8 @@ public class ConnectGraphInstanceHandler {
 
     BasicConnectGraphData gData = new BasicConnectGraphData();
     gData.nodeNumber = new Integer(pInfos[2]).intValue();
-//    int nEdges =  new Integer(pInfos[3]).intValue();
 
-    Vector edges = new Vector();
+    Vector<BasicEdge> edges = new Vector<BasicEdge>();
 
     int minNodeValue = Integer.MAX_VALUE;
     for(int i=1; i<lines.length; i++) {
@@ -44,10 +43,6 @@ public class ConnectGraphInstanceHandler {
         edges.add(edge);
       }
     }
-
-//    if (edges.size() != nEdges) {
-//      throw new Exception("Readable edges ("+edges.size()+") != defined edges ("+new Integer(pInfos[3]).intValue()+ ")");
-//    }
 
     BasicEdge[] fullAttackEdges = new BasicEdge[edges.size()];
     for(int i=0; i<fullAttackEdges.length; i++) {

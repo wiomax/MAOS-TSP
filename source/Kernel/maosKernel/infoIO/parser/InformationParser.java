@@ -44,7 +44,7 @@ public class InformationParser {
     UtilSetNode solverNode = getRawCommandNode(solverString);
     BasicMap moduleContent = getModuleContent(problemType, solverNode.getKey(), SystemSettingPath.SolverPath);
 
-    Hashtable settingParamSet = new Hashtable();
+    Hashtable<String, Object> settingParamSet = new Hashtable<String, Object>();
     parseMetaCMDLineParameters(solverNode, settingParamSet, informationContainer, new InformationContainer());
     execModuleContent(moduleContent.value, settingParamSet, informationContainer, problemType, virtualLandscape);
   }
@@ -59,7 +59,7 @@ public class InformationParser {
   }
 
   public AbsInformationElement createInformationNode(String nodeKey) throws Exception {
-    Class cls = Class.forName(nodeKey);
+    Class<?> cls = Class.forName(nodeKey);
     AbsInformationElement knowledgeNode = (AbsInformationElement)cls.newInstance();
     knowledgeNode.initUtilities();
     return knowledgeNode;
@@ -148,7 +148,7 @@ public class InformationParser {
   
   //inputs:  1) UtilSetNode solverNode; 2) InformationContainer parentInfoContainer
   //outputs: 1) BasicMap moduleContent; 2) Hashtable settingParamSet; 3) InformationContainer informationContainer
-  public void parseMetaCMDLineParameters(UtilSetNode solverNode, Hashtable settingParamSet, InformationContainer informationContainer, InformationContainer parentInfoContainer) throws Exception {
+  public void parseMetaCMDLineParameters(UtilSetNode solverNode, Hashtable<String, Object> settingParamSet, InformationContainer informationContainer, InformationContainer parentInfoContainer) throws Exception {
     for (int i=0; i<solverNode.getUtilSize(); i++) {
       BasicUtility util = solverNode.getUtilityAt(i);
       AbsInformationElement referObj = null;
@@ -172,7 +172,8 @@ public class InformationParser {
     }
   }
   
-  public void parseMappingParameter(String externName, String internName, Hashtable settingParamSet, Hashtable paramMappingSet) {
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+	public void parseMappingParameter(String externName, String internName, Hashtable<String, Object> settingParamSet, Hashtable paramMappingSet) {
     String[] mapStrs = GlobalString.tokenize(internName, ":");
     if (mapStrs.length!=2) return;
     Object paramValue = settingParamSet.get(externName);
@@ -192,7 +193,8 @@ public class InformationParser {
     return solverNode;
   }
   
-  protected UtilSetNode getCommandNode(String name, String cmdLine, Hashtable settingParamSet, Hashtable paramMappingSet) throws Exception {
+  @SuppressWarnings({ "rawtypes" })
+  protected UtilSetNode getCommandNode(String name, String cmdLine, Hashtable<String, Object> settingParamSet, Hashtable paramMappingSet) throws Exception {
     UtilSetNode solverNode = getRawCommandNode(cmdLine);
     solverNode.setName(name);
     Hashtable mappedParams = (Hashtable)paramMappingSet.get(name);
@@ -230,7 +232,8 @@ public class InformationParser {
     return content;
   }
   
-  public void execModuleContent(String moduleContent, Hashtable settingParamSet, InformationContainer informationContainer, String problemType, AbsLandscape virtualLandscape) throws Exception {
+  @SuppressWarnings({ "rawtypes"})
+  public void execModuleContent(String moduleContent, Hashtable<String, Object> settingParamSet, InformationContainer informationContainer, String problemType, AbsLandscape virtualLandscape) throws Exception {
     Hashtable paramMappingSet = new Hashtable();
     
     String[] cmdLines = GlobalString.getMeaningfulLines(moduleContent);
@@ -251,7 +254,7 @@ public class InformationParser {
       } else if (cmdType.equalsIgnoreCase("-L")) {
         UtilSetNode solverNode = getCommandNode(cmdInfo[0], cmdInfo[1], settingParamSet, paramMappingSet);
         InformationContainer tempInfoContainer = new InformationContainer();
-        Hashtable tempSettingParamSet = new Hashtable();
+        Hashtable<String, Object> tempSettingParamSet = new Hashtable<String, Object>();
         BasicMap tempModuleContent = getModuleContent(problemType, solverNode.getKey(), SystemSettingPath.PredefinedPath);
         parseMetaCMDLineParameters(solverNode, tempSettingParamSet, tempInfoContainer, informationContainer);
         execModuleContent(tempModuleContent.value, tempSettingParamSet, tempInfoContainer, problemType, virtualLandscape);

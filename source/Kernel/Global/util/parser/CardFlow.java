@@ -14,7 +14,7 @@ import Global.methods.*;
 import Global.basic.*;
 
 public class CardFlow extends BasicAttrib {
-  private Vector subParams = new Vector();
+  private Vector<Card> subParams = new Vector<Card>();
 
   public CardFlow(){};
 
@@ -33,7 +33,7 @@ public class CardFlow extends BasicAttrib {
   }
 
   public Card[] getParams(String paramName) {
-    Vector cards = new Vector();
+    Vector<Card> cards = new Vector<Card>();
     for (int i=0; i<subParams.size(); i++) {
       Card param = (Card)subParams.elementAt(i);
       if (param.getName().equalsIgnoreCase(paramName)) {

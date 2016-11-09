@@ -64,8 +64,8 @@ public class MultiComplexSearcher extends AbsComplexSearch {
     if (desireMatrix == null) desireMatrix = new int[number][number];
     calcDesireMatrix(desireMatrix, referEngine);
     
-    int selID = statePicker.pick(referEngine);
-    EncodedState referState = referEngine.getSelectedPoint(selID);
+//    int selID = statePicker.pick(referEngine);
+//    EncodedState referState = referEngine.getSelectedPoint(selID);
     
     return true;
   }

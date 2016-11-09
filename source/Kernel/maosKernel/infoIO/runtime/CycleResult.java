@@ -24,7 +24,7 @@ public class CycleResult extends BasicObject {
   public int NCycle;
   private IGetEncodeTypeEngine encodeType;
   
-  private Vector auxData = new Vector(); //BasicMap
+  private Vector<BasicMap> auxData = new Vector<BasicMap>(); //BasicMap
 
   public CycleResult() {
   }
@@ -77,44 +77,44 @@ public class CycleResult extends BasicObject {
 //    return FormatOutput.smartFormatConvert(Time);
   }
 
-  protected Vector getBasicNames() {
-    Vector names = new Vector();
+  protected Vector<String> getBasicNames() {
+    Vector<String> names = new Vector<String>();
     names.add("EvalV");
     names.add("Time");
     return names;
   }
   
-  public Vector getAllNames() {
-    Vector names = getBasicNames();
+  public Vector<String> getAllNames() {
+    Vector<String> names = getBasicNames();
     for (int i=0; i<this.auxData.size(); i++) {
       names.add(((BasicMap)auxData.elementAt(i)).name);
     }
     return names;
   }
 
-  public Vector getCycledAllNames() {
-    Vector names = getAllNames();
+  public Vector<String> getCycledAllNames() {
+    Vector<String> names = getAllNames();
     names.add("NCycle");
     return names;
   }
   
-  protected Vector getBasicValues() {
-    Vector values = new Vector();
+  protected Vector<String> getBasicValues() {
+    Vector<String> values = new Vector<String>();
     values.add(EncodedStateHandler.writeEncodedInfo(encodeType, BState.getEncodeInfo()));
     values.add(getTimeString());
     return values;
  }
 
-  public Vector getAllValues() {
-    Vector values = getBasicValues();
+  public Vector<String> getAllValues() {
+    Vector<String> values = getBasicValues();
     for (int i=0; i<this.auxData.size(); i++) {
       values.add(((BasicMap)auxData.elementAt(i)).value);
     }
     return values;
   }
 
-  public Vector getCycledAllValues() {
-    Vector values = getAllValues();
+  public Vector<String> getCycledAllValues() {
+    Vector<String> values = getAllValues();
     values.add(""+NCycle);
     return values;
   }
