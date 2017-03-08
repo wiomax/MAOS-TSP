@@ -22,7 +22,7 @@ Compile: Run "ant" to compile in the command line, or import "Java Project from 
 Reference
 ---------
 
-[1] X.-F. Xie, J. Liu. Multiagent optimization system for solving the traveling salesman problem (TSP). IEEE Transactions on Systems, Man, and Cybernetics - Part B, 2009, 39(2): 489-502.
+[1] X.-F. Xie, J. Liu. Multiagent optimization system for solving the traveling salesman problem (TSP). IEEE Transactions on Systems, Man, and Cybernetics - Part B, 2009, 39(2): 489-502. [PDF](http://www.wiomax.com/team/xie/paper/TSMCB09.pdf)
 
 General information
 -------------------
