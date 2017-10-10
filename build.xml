@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="jTLC_M_Dec">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+
+    <property name="src.dir"   value="source"/>
+    <property name="build.dir" value="binary"/>
+    <property name="lib.dir"   value="library"/>
+    <property name="jar.dir"   value="release"/>
+    <property name="jar.file"  value="${jar.dir}/MAOS_SEQ.jar"/>
+    <property name="manifest.file" value="${jar.dir}/MANIFEST.MF"/>
+    <property name="main.class" value="maosKernel.MAOSExecuter"/>
+
+    <path id="external.jars">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <path id="project.classpath">
+        <pathelement location="${src.dir}/Kernel;${src.dir}/Permutation"/>
+        <path refid="external.jars" />
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <copy includeemptydirs="false" todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+	    <delete file="${jar.file}"/>
+    </target>
+
+    <target depends="clean" name="cleanall"/>
+
+    <target depends="clean,init" name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}" includeantruntime="false" source="${source}" target="${target}">
+            <src path="${src.dir}"/>
+            <classpath refid="external.jars"/>
+        </javac>
+    </target>
+
+    <target depends="compile" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+
+        <tstamp>
+            <format property="builtat" pattern="MM/dd/yyyy hh:mm aa" timezone="America/New_York"/>
+        </tstamp>        
+
+        <manifest file="${manifest.file}" >
+            <attribute name="Main-Class" value="${main.class}" />
+	    <attribute name="Provider" value="http://www.wiomax.com"/>
+	    <attribute name="Title" value="MAOS"/>
+	    <attribute name="Author" value="Xiao-Feng Xie"/>
+            <attribute name="built-by" value="${user.name}" />
+            <attribute name="Built-Date" value="${builtat}"/>                 
+        </manifest>
+
+        <jar destfile="${jar.file}" basedir="${build.dir}" manifest="${manifest.file}">
+            <fileset dir="${build.dir}" includes="**/*.class" />
+            <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+        </jar>
+        <delete file="${manifest.file}"/>
+    </target>
+</project>
+
