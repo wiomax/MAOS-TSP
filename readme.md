@@ -15,7 +15,7 @@ Please acknowledge the author(s) if you use this code in any way.
 Quick start
 -----------
 
-Execute: Enter the directory "[myprojects](https://github.com/xie/MAOS-TSP/tree/master/myprojects)", then run the file "examples.bat".
+Execute: Enter the directory "[myprojects](https://github.com/xfxie/MAOS-TSP/tree/master/myprojects)", then run the file "examples.bat".
 
 Compile: Run "ant" to compile in the command line, or import "Java Project from Existing Ant Build File" in Eclipse IDE. 
 
