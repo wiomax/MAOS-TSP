@@ -8,7 +8,7 @@ The multiagent optimization system (MAOS) supports the cooperative search by sel
 License description
 -------------------
 
-See the [Creative Commons Non-Commercial License 3.0] (https://creativecommons.org/licenses/by-nc/3.0/us/) for more details.
+See the [Creative Commons Non-Commercial License 3.0](https://creativecommons.org/licenses/by-nc/3.0/us/) for more details.
 
 Please acknowledge the author(s) if you use this code in any way.
 
