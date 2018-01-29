@@ -31,7 +31,7 @@ public class TSPTourCostCalculator implements IUseOptionsEngine {
 	    String solFile = getCmdStr("s", cmdLine);
 	    String contentS = GlobalFile.getStringFromFile(solFile);
 	    int[] permutations = solHandler.naiveReadSolution(contentS);
-	    for (int i=1; i<permutations.length; i++) {
+	    for (int i=0; i<permutations.length; i++) {
 	    	permutations[i] --;
 	    }
 	    
