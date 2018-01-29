@@ -225,7 +225,7 @@ public final class MAOSExecuter {
     }
   }
 
-  private AbsMAOSInitializer loadProblemType(String problemType) throws Exception {
+  public static AbsMAOSInitializer loadProblemType(String problemType) throws Exception {
     String initializerName = SystemSettingPath.getInitializerName(problemType);
     try {
       Class<?> cls = Class.forName(initializerName);

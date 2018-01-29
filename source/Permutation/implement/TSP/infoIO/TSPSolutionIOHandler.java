@@ -23,6 +23,7 @@ import Global.methods.*;
 
 import maosKernel.memory.*;
 import maosKernel.represent.landscape.*;
+import maosKernel.represent.landscape.space.SearchState;
 import implement.common.infoIO.*;
 
 public class TSPSolutionIOHandler extends AISolutionIOHandler {
@@ -45,9 +46,17 @@ public class TSPSolutionIOHandler extends AISolutionIOHandler {
   }
 
   public void naiveReadSolution(EncodedState state, String content) throws Exception {
+  	naiveReadSolution(state.getSearchState(), content);
+  }
+  
+  public void naiveReadSolution(SearchState state, String content) throws Exception {
+  	state.initLocation(naiveReadSolution(content));
+  }
+  
+  public int[] naiveReadSolution(String content) throws Exception {
     String[] lines = GlobalString.getMeaningfulLines(content);
     int index = StringSearch.getStringLoc(lines, "TOUR_SECTION");
-    if (index==-1) return;
+    if (index==-1) return null;
     int endIndex1 = StringSearch.getStringLoc(lines, "-1");
     int endIndex2 = StringSearch.getStringLoc(lines, "EOF");
     int endIndex = lines.length;
@@ -100,7 +109,7 @@ public class TSPSolutionIOHandler extends AISolutionIOHandler {
         }
       }
     }
-    state.getSearchState().initLocation(tourPath);
+    return tourPath;
   }
 
   private static String getSubString(String[] lines, String headStr) {
