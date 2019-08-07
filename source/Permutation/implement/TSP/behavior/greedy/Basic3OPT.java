@@ -25,6 +25,9 @@
 package implement.TSP.behavior.greedy;
 
 import Global.methods.*;
+
+import static java.lang.Math.min;
+
 import Global.basic.nodes.utilities.*;
 
 import maosKernel.represent.landscape.*;
@@ -134,7 +137,7 @@ public final class Basic3OPT extends AbsExplicitLocalSearch {
 
         s_tour_IDs[0] = BasicArray.getSuccessorID(n, c_tour_IDs[0]);
 
-        h = 0;    /* Search for one of the h-nearest neighbours */
+        h = 0;    /* Search for one of the h-nearest neighbors */
         nn_ls0 = neighborEngine.getElementNumberAt(c_city_IDs[0]);
         while ( h < nn_ls0 ) {
           if (improvement_flag) {
@@ -149,7 +152,7 @@ public final class Basic3OPT extends AbsExplicitLocalSearch {
             continue;
           }
 
-          /* Here a fixed radius neighbour search is performed */
+          /* Here a fixed radius neighbor search is performed */
           if ( costMatrix[c_city_IDs[0]][tour[s_tour_IDs[0]]] < costMatrix[c_city_IDs[0]][c_city_IDs[1]] ) {
             continue;
           }
@@ -158,7 +161,7 @@ public final class Basic3OPT extends AbsExplicitLocalSearch {
           g = 0;
           nn_ls1 = neighborEngine.getElementNumberAt(tour[s_tour_IDs[0]]);
           decrease_breaks = costMatrix[c_city_IDs[0]][tour[s_tour_IDs[0]]];
-          decrease_breaks += Math.min(costMatrix[tour[s_tour_IDs[1]]][c_city_IDs[1]], costMatrix[tour[p_tour_IDs[1]]][c_city_IDs[1]]);
+          decrease_breaks += min(costMatrix[tour[s_tour_IDs[1]]][c_city_IDs[1]], costMatrix[tour[p_tour_IDs[1]]][c_city_IDs[1]]);
           decrease_breaks = costMatrix[c_city_IDs[0]][c_city_IDs[1]]-decrease_breaks;
           while (g < nn_ls1) {
             c_city_IDs[2] = neighborEngine.getNNArrayAt(tour[s_tour_IDs[0]])[g]; /* third city*/
@@ -171,7 +174,7 @@ public final class Basic3OPT extends AbsExplicitLocalSearch {
               continue;
             }
 
-            /* Perform fixed radius neighbour search for innermost search */
+            /* Perform fixed radius neighbor search for innermost search */
             if (decrease_breaks+costMatrix[tour[s_tour_IDs[0]]][c_city_IDs[2]]>0) {
               continue;
             }

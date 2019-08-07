@@ -18,5 +18,12 @@ public class BasicEdge {
     this.endIndex = endI;
   }
 
+  public int getStartIndex() {
+    return startIndex;
+  }
+
+  public int getEndIndex() {
+    return endIndex;
+  }
 }
 
