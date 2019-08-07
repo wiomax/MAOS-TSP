@@ -39,7 +39,7 @@ public final class RealProblemData extends AbsProblemData implements IGetProblem
     return costMatrix;
   }
 
-  public final int getLocalCost(int nodeA, int nodeB) {
+  public final double getLocalCost(int nodeA, int nodeB) {
     return costMatrix[nodeA][nodeB];
   }
 
@@ -47,12 +47,8 @@ public final class RealProblemData extends AbsProblemData implements IGetProblem
     return costMatrix.length;
   }
 
-  public int getGlobalCost(int[] permutations) {
-    int totalLength = getLocalCost(permutations[permutations.length-1], permutations[0]);
-    for (int i=1; i<permutations.length; i++) {
-      totalLength += getLocalCost(permutations[i-1], permutations[i]);
-    }
-    return totalLength;
+  public double getGlobalCost(int[] permutations) {
+  	return CostMethods.getGlobalCost(permutations, this);
   }
 }
 

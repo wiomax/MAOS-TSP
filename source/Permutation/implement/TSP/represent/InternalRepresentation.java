@@ -17,7 +17,7 @@ import implement.common.represent.*;
 import implement.common.knowledge.distance.*;
 
 public final class InternalRepresentation extends AbsILandscape {
-  protected IGetProblemDataEngine dataStorager = null;
+  protected RealProblemData dataStorager = null;
 
   public InternalRepresentation(RealProblemData problemData) {
     super(problemData);
@@ -33,13 +33,11 @@ public final class InternalRepresentation extends AbsILandscape {
   }
 
   public double getGlobalCost(SearchState state) {
-    int[] permutations = state.getIArray();
-    int[][] costMatrix = dataStorager.getCostMatrix();
-    int totalLength = costMatrix[permutations[permutations.length-1]][permutations[0]];
-    for (int i=1; i<permutations.length; i++) {
-      totalLength += costMatrix[permutations[i-1]][permutations[i]];
-    }
-    return totalLength;
+  	return dataStorager.getGlobalCost(state.getIArray());
+  }
+  
+  public double getLocalCost(int nodeA, int nodeB) {
+  	return dataStorager.getLocalCost(nodeA, nodeB);
   }
 
   ICalcDistanceEngine distanceCalculator = new AdjacencyDistanceCalculator();

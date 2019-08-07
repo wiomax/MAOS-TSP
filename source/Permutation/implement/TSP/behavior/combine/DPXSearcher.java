@@ -12,8 +12,7 @@
  * @version 1.0
  *
  * @ Reference:
- * [1] New Genetic Local Search Operators for the Traveling Salesman Problem.
- *     B Freisleben, P Merz - PPSN, 890-899, 1996
+ * [1] New Genetic Local Search Operators for the Traveling Salesman Problem. B Freisleben, P Merz - PPSN, 890-899, 1996
  */
 
 package implement.TSP.behavior.combine;

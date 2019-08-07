@@ -106,27 +106,15 @@ public class InverOverSearcher extends AbsComplexSearch {
      * From the remain cities
      */
       if ( Math.random() < pRandom) {
-//        if (neighborEngine!=null) {
-//          int[] neighborNodes = neighborEngine.getNNArrayAt(offspringCurrentCity);
-//          int neighborNumber = neighborEngine.getElementNumberAt(offspringCurrentCity);
-//          offspringCityPrime = neighborNodes[RandomGenerator.intRangeRandom(neighborNumber)];
-//          offspringCityPrimeIndex = findCityIndex(trialPoint, offspringCityPrime);;
-//        } else {
           int pVaried = RandomGenerator.intRangeRandom(numCities - 1)+1;
           offspringCityPrimeIndex = (offspringCurrentCityIndex+pVaried)%numCities;
           offspringCityPrime = trialPoint.getSearchState().getValueAt(offspringCityPrimeIndex );
-//        }
       } else {
-       /*
-         ** Pick a consultant, let him tell us which city is next to our current
-         ** city in _his_ genome, then change our genome to make that also true
-         ** for us.
-         */
         offspringCityPrime = selectNextNodeAt(msState, offspringCurrentCity);
         offspringCityPrimeIndex =  BasicArray.getExactIndex(trialPoint.getSearchState().getIArray(), offspringCityPrime);
       }
 
-      /*
+      /**
        ** Check if that the next city is the neighbor of self.
        */
       if(
@@ -136,7 +124,7 @@ public class InverOverSearcher extends AbsComplexSearch {
         offspringCurrentCityIndex = BasicArray.getSuccessorID(numCities, offspringCurrentCityIndex);
         pCount ++;
       } else {
-      /*
+      /**
        ** If not done, then invert the segment of my genome from beside
        ** my current city of interest to the one I want next to it, which will
        ** accomplish that goal.
@@ -150,9 +138,8 @@ public class InverOverSearcher extends AbsComplexSearch {
 
         invCount++;
         isWorked = true;
-        /*
-         ** Make the city I just moved next to my city of interest,
-         ** and try again.
+        /**
+         ** Make the city I just moved next to my city of interest, and try again.
          */
         offspringCurrentCityIndex = invertTo;
         pCount += BasicArray.getPeriodDistance(numCities, invertFrom, invertTo);

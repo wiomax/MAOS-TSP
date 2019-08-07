@@ -13,7 +13,6 @@
 
 package implement.TSP.represent;
 
-public interface IGetLocalCostEngine extends IGetCostMatrixEngine {
-  public double getLocalCost(int nodeA, int nodeB);
-  public int getNodeNumber();
+public interface IGetCostMatrixEngine {
+  public int[][] getCostMatrix();
 }

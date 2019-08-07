@@ -23,6 +23,7 @@ import Global.methods.*;
 import maosKernel.represent.landscape.space.*;
 import maosKernel.represent.landscape.*;
 import implement.TSP.behavior.misc.*;
+import implement.TSP.represent.IGetLocalCostEngine;
 
 public class NearNeighborManager extends AbsNeighborManager {
   //parameters
@@ -149,6 +150,22 @@ public class NearNeighborManager extends AbsNeighborManager {
       }
     }
     return number;
+  }
+
+  public final static int getNearestNeighbor(int actualNode, IGetLocalCostEngine costEngine) {
+  	int nearestNode = -1;
+  	int nodeNumber = costEngine.getNodeNumber();
+  	double minCost = Double.MAX_VALUE;
+  	for(int i = 0; i < nodeNumber; ++i) {
+  		if(i != actualNode) {
+  			double cost = costEngine.getLocalCost(actualNode, i);
+  			if(cost < minCost) {
+  				nearestNode = i;
+  				minCost = cost; 
+  			}
+  		}
+  	}
+  	return nearestNode;
   }
 }
 
