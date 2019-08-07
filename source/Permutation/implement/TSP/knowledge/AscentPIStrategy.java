@@ -19,7 +19,7 @@ package implement.TSP.knowledge;
 
 import Global.basic.data.*;
 import Global.basic.data.matrix.*;
-import implement.TSP.behavior.neighbor.*;
+//import implement.TSP.behavior.neighbor.*;
 
 public class AscentPIStrategy {
   private PiCostMatrix piCostMatrix;
@@ -33,6 +33,8 @@ public class AscentPIStrategy {
   private int[] currDegree;
   private int[] lastDegree;
   //****************************
+  
+  private PrimeMSTSolver mstSolver;
 
   public AscentPIStrategy(PiCostMatrix piCostMatrix) {
     this.piCostMatrix = piCostMatrix;
@@ -44,6 +46,7 @@ public class AscentPIStrategy {
     spanningTree = new SpanningTree(nodeNumber);
     alphaMatrixManager = new AlphaMatrixManager(nodeNumber);
     min1TreeHandler = new Minimum1TreeHandler(nodeNumber);
+    mstSolver = new PrimeMSTSolver(nodeNumber);
   }
 
   public FullSquareIMatrix getAlphaMatrix() {
@@ -69,15 +72,15 @@ public class AscentPIStrategy {
 
   private void adjustMinimum1TreeHandler() {
     spanningTree.clear();
-    MinimumSpanningTreeSolver.prim_mst(spanningTree, piCostMatrix);
+    mstSolver.getSpanningTree(spanningTree, piCostMatrix);
     min1TreeHandler.initMinimum1TreeFromSpanningTree(spanningTree, piCostMatrix);
   }
 
-  private void adjustMinimum1TreeHandler(INeighborEngine neighborManager) {
-    spanningTree.clear();
-    MinimumSpanningTreeSolver.prim_mst(spanningTree, piCostMatrix, neighborManager);
-    min1TreeHandler.initMinimum1TreeFromSpanningTree(spanningTree, piCostMatrix);
-  }
+//  private void adjustMinimum1TreeHandler(INeighborEngine neighborManager) {
+//    spanningTree.clear();
+//    mstSolver.getSpanningTree(spanningTree, piCostMatrix, neighborManager);
+//    min1TreeHandler.initMinimum1TreeFromSpanningTree(spanningTree, piCostMatrix);
+//  }
 
   /*
      The Ascent function computes a lower bound on the optimal tour length using
@@ -102,7 +105,7 @@ public class AscentPIStrategy {
    double stepT = 1.0;
    double currRatio = 0.7;
    double precisionT = 1.0/piCostMatrix.getPrecision();
-   int nnSize = 50;
+   //int nnSize = 50;
 
    piCostMatrix.setPIArray(basePIArray);
    this.adjustMinimum1TreeHandler();
@@ -110,7 +113,7 @@ public class AscentPIStrategy {
    int BestW = getPrivateW();
 
    //to sparse graph
-   NearNeighborManager neighborManager = new NearNeighborManager(getAlphaMatrix(), nnSize);
+   //NearNeighborManager neighborManager = new NearNeighborManager(getAlphaMatrix(), nnSize);
 
    /* Perform subgradient optimization with decreasing period length and decreasing step size */
    boolean InitialPhase = true;
@@ -126,7 +129,8 @@ public class AscentPIStrategy {
        System.arraycopy(currDegree, 0, lastDegree, 0, nodeNumber);
        piCostMatrix.setPIArray(basePIArray);
        /* Compute a minimum 1-tree in the sparse graph */
-       this.adjustMinimum1TreeHandler(neighborManager); //??? should use sparse mode in future
+       this.adjustMinimum1TreeHandler(); //??? should use sparse mode in future
+       //this.adjustMinimum1TreeHandler(neighborManager); //??? should use sparse mode in future
        int W = getPrivateW();
        if (W > BestW) {
          BestW = W;

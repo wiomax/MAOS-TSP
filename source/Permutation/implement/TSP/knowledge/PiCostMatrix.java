@@ -16,14 +16,16 @@
 
 package implement.TSP.knowledge;
 
-import Global.basic.data.matrix.*;
-import Global.math.*;
+import static Global.math.ArrayMath.totalSum;
+
+import Global.basic.data.matrix.FullSquareIMatrix;
+import Global.basic.data.matrix.ISquareIMatrixEngine;
 
 public class PiCostMatrix implements ISquareIMatrixEngine {
   private int precision = 1;
   private ISquareIMatrixEngine sdMatrix;
   private int[] piArray;
-  int[][] piMatrix;
+  private int[][] piMatrix;
 
   public PiCostMatrix(ISquareIMatrixEngine sdMatrix) {
     this.sdMatrix = sdMatrix;
@@ -74,7 +76,7 @@ public class PiCostMatrix implements ISquareIMatrixEngine {
 
   public int getPenaltyValue() {
     if (piArray==null) return 0;
-    return 2*ArrayMath.totalSum(piArray);
+    return 2*totalSum(piArray);
   }
 
   public int getValueAt(int i, int j) {
