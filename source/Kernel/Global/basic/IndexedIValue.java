@@ -18,8 +18,7 @@ public class IndexedIValue implements Comparable<IndexedIValue> {
     value = v;
   }
 
-  public int compareTo(IndexedIValue o) {
-    IndexedIValue outO = ((IndexedIValue)o);
+  public int compareTo(IndexedIValue outO) {
     if (value<outO.value) return -1;
     else if (value==outO.value) return 0;
     else return 1;
