@@ -38,7 +38,6 @@ public class FusionSearch extends AbsRecombinationSearch {
 
   public boolean generate(EncodedState trialState, EncodedState baseState, EncodedState referState) {
     if (!recombinationSearch.generate(trialState, baseState, referState)) return false;
-//    if (!localSearch.generate(trialState)) return false;
     localSearch.generate(trialState);
     return true;
   }
