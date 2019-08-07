@@ -1,6 +1,6 @@
 NAME: cabi490
 TYPE: TSP
-COMMENT: Capital Bikeshare of 490-city TSP (Xie)
+COMMENT: Capital Bikeshare of 490-station TSP (Xie)
 DIMENSION: 490
 EDGE_WEIGHT_TYPE: GEO
 DISPLAY_DATA_TYPE: COORD_DISPLAY
