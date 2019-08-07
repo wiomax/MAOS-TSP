@@ -59,6 +59,8 @@ public class MultiComplexSearcher extends AbsComplexSearch {
     }
   }
 
+  
+  //unfinished
   public boolean generate(EncodedState trialState, EncodedState baseState, IGetEachEncodedStateEngine referEngine) {
     int number = trialState.getSearchState().getNodeNumber();
     if (desireMatrix == null) desireMatrix = new int[number][number];
