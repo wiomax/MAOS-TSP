@@ -14,13 +14,13 @@ import java.util.*;
 import maosKernel.represent.information.*;
 
 public class ModuleInitializer {
-  private Vector cycleModules = new Vector();
-  private Vector trialModules = new Vector();
+  private Vector<ICycleInitEngine> cycleModules = new Vector<ICycleInitEngine>();
+  private Vector<ITrialInitEngine> trialModules = new Vector<ITrialInitEngine>();
 
   public ModuleInitializer() {
   }
 
-  public boolean isElementExist(AbsInformationElement element, Vector modules) {
+  public boolean isElementExist(AbsInformationElement element, Vector<?> modules) {
     AbsInformationElement elementAtI = null;
     for (int i=0; i<modules.size(); i++) {
       elementAtI = (AbsInformationElement) modules.elementAt(i);
@@ -29,7 +29,8 @@ public class ModuleInitializer {
     return false;
   }
 
-  protected boolean addElement(AbsInformationElement element, Vector modules) {
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+	protected boolean addElement(AbsInformationElement element, Vector modules) {
     if (!isElementExist(element, modules)) {
       modules.addElement(element);
       return true;

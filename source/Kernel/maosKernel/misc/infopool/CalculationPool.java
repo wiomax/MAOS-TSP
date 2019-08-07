@@ -12,7 +12,7 @@ package maosKernel.misc.infopool;
 import java.util.*;
 
 public final class CalculationPool {
-  private Hashtable ioMappingPool = new Hashtable();
+  private Hashtable<String, IOMappingObject> ioMappingPool = new Hashtable<String, IOMappingObject>();
 
   public CalculationPool() {
   }

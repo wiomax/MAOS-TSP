@@ -36,7 +36,7 @@ public class SectionParser {
   }
 
   public static BasicMap[] parseSections(String iniSrc) throws Exception {
-    Vector data = new Vector();
+    Vector<BasicMap> data = new Vector<BasicMap>();
     StringReader outStringReader = new StringReader(iniSrc);
     BufferedReader outReader = new BufferedReader(outStringReader);
     String str;

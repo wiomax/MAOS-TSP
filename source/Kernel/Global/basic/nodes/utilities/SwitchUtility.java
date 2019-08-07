@@ -18,7 +18,7 @@ public class SwitchUtility extends BasicUtility {
 
   public SwitchUtility() {
     super(SWITCH_UTIL_NAME);
-    value = new Vector();
+    value = new Vector<Object>();
   }
 
   public SwitchUtility(String name) {
@@ -37,15 +37,16 @@ public class SwitchUtility extends BasicUtility {
     getAllData().clear();
   }
 
-  public Vector getAllData() {
-    return (Vector) value;
+  @SuppressWarnings("unchecked")
+	public Vector<Object> getAllData() {
+    return (Vector<Object>) value;
   }
 
   public Object getElementAt(int index) {
     return getAllData().elementAt(index);
   }
 
-  public boolean setGroupValues(Vector outValue) {
+  public boolean setGroupValues(Vector<? extends Object> outValue) {
     for(int i=0; i<outValue.size(); i++) {
       boolean isValid = setValue(outValue.elementAt(i));
       if(!isValid) return false;
@@ -58,7 +59,7 @@ public class SwitchUtility extends BasicUtility {
 
   public boolean setValue(Object outValue) {
     if(super.isSatisfyConstraints(outValue)) {
-      Vector allData = getAllData();
+      Vector<Object> allData = getAllData();
       if (limitation.isSatisfyCondition(getElementsSize())) {
         allData.add(outValue);
         return true;

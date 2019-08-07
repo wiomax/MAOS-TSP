@@ -18,7 +18,7 @@ import Global.basic.*;
 import Global.define.*;
 
 public class Card extends BasicAttrib {
-  private Vector subParams = new Vector();
+  private Vector<CardParam> subParams = new Vector<CardParam>();
 
   public Card(){};
 

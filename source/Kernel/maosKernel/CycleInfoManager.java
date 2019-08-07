@@ -43,7 +43,7 @@ public final class CycleInfoManager implements ICycleInfoEngine, ITrialInitEngin
   private IHistoricalHandleEngine historicalStateHandler;
   private ResultOutputHandler resultOutputHandler;
   
-  private Vector allBestCycleResults = new Vector();
+  private Vector<CycleResult> allBestCycleResults = new Vector<CycleResult>();
 
   //ANALYZE INFORMATION
 //  private DiversityAnalysizer cycleAnalysizer = new DiversityAnalysizer();
@@ -148,7 +148,7 @@ public final class CycleInfoManager implements ICycleInfoEngine, ITrialInitEngin
       resultOutputHandler.writeLastInfo(bestCycleResult);
       historicalStateHandler.outputHistoryState();
       GradedOut.showIMPORTANTMessage(MessageTags.MSGTAG_PLAIN+"Trial summary: "+bestCycleResult.getCycleInfo());
-      allBestCycleResults.add(bestCycleResult.clone());
+      allBestCycleResults.add((CycleResult)bestCycleResult.clone());
       return true;
     }
     GlobalTools.CPUTimeCostCounter.setStart(RUN_TIME_FLAG);
@@ -159,11 +159,11 @@ public final class CycleInfoManager implements ICycleInfoEngine, ITrialInitEngin
     int trialSize = allBestCycleResults.size();
     if (trialSize==0) return "@ No Information Available";
     
-    Vector allNames = ((CycleResult)allBestCycleResults.get(0)).getCycledAllNames();
+    Vector<String> allNames = ((CycleResult)allBestCycleResults.get(0)).getCycledAllNames();
     int nameSize = allNames.size();
     double[][] data = new double[nameSize][trialSize];
     for (int i=0; i<trialSize; i++) {
-      Vector allValues = ((CycleResult)allBestCycleResults.get(i)).getCycledAllValues();
+      Vector<String> allValues = ((CycleResult)allBestCycleResults.get(i)).getCycledAllValues();
       for (int j=0; j<nameSize; j++) {
         data[j][i] = TypeConverter.toDouble(allValues.elementAt(j));
       }

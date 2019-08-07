@@ -16,6 +16,7 @@ import Global.basic.nodes.*;
 import Global.basic.nodes.loader.*;
 import Global.basic.nodes.utilities.*;
 import maosKernel.infoIO.parser.*;
+import maosKernel.represent.landscape.quality.ICalcGlobalCostEngine;
 
 public class SwarmSettings extends UtilSetNode {
   /**********************algorithm************************/
@@ -37,6 +38,8 @@ public class SwarmSettings extends UtilSetNode {
 
   public int Tout = 5;
 
+  public double opt = ICalcGlobalCostEngine.WOSRTVALUE;
+
   public SwarmSettings() {
     this.setKey("SwarmSettings");
   }
@@ -57,7 +60,9 @@ public class SwarmSettings extends UtilSetNode {
     initUtility(new IntegerUtility("Tout", Tout));
 
     initUtility(new BasicUtility("solver", solver));
-  }
+
+    initUtility(new DoubleUtility("opt", opt));
+}
 
   public void shortcutInit() throws Exception {
     super.shortcutInit();
@@ -72,6 +77,8 @@ public class SwarmSettings extends UtilSetNode {
     Tout = TypeConverter.toInteger(getValue("Tout"));
 
     solver = TypeConverter.toString(getValue("solver"));
+
+    opt = TypeConverter.toDouble(getValue("opt"));
   }
 
   protected String getFileNodesString(String[] parameters) {

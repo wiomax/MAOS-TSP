@@ -15,7 +15,7 @@ import Global.methods.*;
 import Global.define.*;
 
 public class DiscreteUtility extends StringableUtility {
-  protected Vector elements = new Vector();
+  protected Vector<Object> elements = new Vector<Object>();
 
   protected DiscreteUtility() {}
 
@@ -24,7 +24,7 @@ public class DiscreteUtility extends StringableUtility {
     this.description = "Discrete";
   }
 
-  public DiscreteUtility(String outName, Vector outElems){
+  public DiscreteUtility(String outName, Vector<Object> outElems){
     this(outName);
     elements = outElems;
     if (outElems.size()>0) {
@@ -54,7 +54,7 @@ public class DiscreteUtility extends StringableUtility {
     return StringSearch.getSelectedIndex(getAllElements(), value);
   }
 
-  public Vector getAllElements(){
+  public Vector<Object> getAllElements(){
     return elements;
   }
 

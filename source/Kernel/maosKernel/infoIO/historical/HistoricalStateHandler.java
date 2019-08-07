@@ -12,13 +12,13 @@
 package maosKernel.infoIO.historical;
 
 import java.io.*;
+
 import Global.system.*;
 import Global.system.io.*;
 import maosKernel.represent.landscape.*;
 import maosKernel.memory.*;
 import maosKernel.infoIO.setting.*;
 import maosKernel.represent.landscape.quality.*;
-//import implement.GCP.behavior.mutate.*;
 
 public class HistoricalStateHandler implements IDefineLowerBoundEngine, IHistoricalHandleEngine {
   private boolean isOpt = false;
@@ -41,6 +41,12 @@ public class HistoricalStateHandler implements IDefineLowerBoundEngine, IHistori
 
   private String getOptFile(String problemName) throws Exception {
     return solutionIOEngine.getOptimalSolutionFileName(virtualLandscape.getKey(), problemName, false);
+  }
+
+  public void setOptimalBound(double lowBoundEncodedData) {
+  	if (isOpt || lowBoundEncodedData==ICalcGlobalCostEngine.WOSRTVALUE) return;
+  	historyState.setEncodeInfo(lowBoundEncodedData);
+  	this.isOpt = true;
   }
 
   public void setLowerBound(double lowBoundEncodedData) {

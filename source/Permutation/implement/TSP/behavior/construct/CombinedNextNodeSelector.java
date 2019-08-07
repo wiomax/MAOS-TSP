@@ -17,7 +17,7 @@ import Global.methods.*;
 
 
 public class CombinedNextNodeSelector implements INextNodeSelectEngine {
-  Vector nexNodeSelectors = new Vector();
+  Vector<INextNodeSelectEngine> nexNodeSelectors = new Vector<INextNodeSelectEngine>();
   double[] selRatios = new double[0];
 
   public CombinedNextNodeSelector() {

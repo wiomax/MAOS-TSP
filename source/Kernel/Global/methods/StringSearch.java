@@ -60,7 +60,7 @@ public class StringSearch {
     return indices;
   }
 
-  public static int[] getFullOrderIndices(Vector names, Vector orderNames) {
+  public static int[] getFullOrderIndices(Vector<?> names, Vector<?> orderNames) {
     int[] indices = new int[orderNames.size()];
     for(int i=0; i<orderNames.size(); i++) {
       indices[i] = getSelectedIndex(names, orderNames.elementAt(i));
@@ -68,7 +68,7 @@ public class StringSearch {
     return indices;
   }
 
-  public static int[] getValidOrderIndices(Vector names, Vector orderNames) {
+  public static int[] getValidOrderIndices(Vector<?> names, Vector<?> orderNames) {
     int validSize = 0;
     int[] indices = new int[orderNames.size()];
     for(int i=0; i<orderNames.size(); i++) {
@@ -89,16 +89,16 @@ public class StringSearch {
     return nObj.toString();
   }
 
-  public static Vector getObjStringSet(Vector strObjSet) {
-    Vector strSet = new Vector();
+  public static Vector<Object> getObjStringSet(Vector<?> strObjSet) {
+    Vector<Object> strSet = new Vector<Object>();
     for(int i=0; i<strObjSet.size(); i++) {
       strSet.add(getObjString(strObjSet.elementAt(i)));
     }
     return strSet;
   }
 
-  public static Vector removeObjStringSet(Vector origStringObjSet, Vector tobeRemovedSet) {
-    Vector strSet = new Vector();
+  public static Vector<Object> removeObjStringSet(Vector<?> origStringObjSet, Vector<?> tobeRemovedSet) {
+    Vector<Object> strSet = new Vector<Object>();
     strSet.addAll(origStringObjSet);
     for(int i=0; i<tobeRemovedSet.size(); i++) {
       String name = getObjString(tobeRemovedSet.elementAt(i));
@@ -120,7 +120,7 @@ public class StringSearch {
     return (getObjString(nSrc).equalsIgnoreCase(getObjString(nObj)));
   }
 
-  public static int getSelectedIndex(Vector nSrc, Object nObj) {
+  public static int getSelectedIndex(Vector<?> nSrc, Object nObj) {
     if(nSrc==null||nObj==null) return -1;
     for(int i=0; i<nSrc.size(); i++) {
       if(getObjString(nSrc.elementAt(i)).equalsIgnoreCase(getObjString(nObj))) return i;
@@ -143,8 +143,8 @@ public class StringSearch {
     return -1;
   }
 
-  public static Vector getElementsByKey(String key,  Enumeration enumData) {
-    Vector activeElements = new Vector();
+  public static Vector<Object> getElementsByKey(String key,  Enumeration<?> enumData) {
+    Vector<Object> activeElements = new Vector<Object>();
     while (enumData.hasMoreElements()) {
       BasicAttrib oper = (BasicAttrib)enumData.nextElement();
       if(oper.isSameKey(key)) {
@@ -154,8 +154,8 @@ public class StringSearch {
     return activeElements;
   }
 
-  public static Vector getSameKeys(IGetKeyEngine[] targets) {
-    Vector keys = new Vector();
+  public static Vector<String> getSameKeys(IGetKeyEngine[] targets) {
+    Vector<String> keys = new Vector<String>();
     for(int i=0; i<targets.length; i++) {
       IGetKeyEngine no = targets[i];
       int index = getSelectedIndex(keys, no.getKey());

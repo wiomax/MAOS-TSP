@@ -15,7 +15,7 @@ import java.util.*;
 import maosKernel.represent.information.*;
 
 public class InformationContainer {
-  private Hashtable knowledgeTable = new Hashtable();
+  private Hashtable<String, AbsInformationElement> knowledgeTable = new Hashtable<String, AbsInformationElement>();
 
   public AbsInformationElement getElement(String nodeName){
     return (AbsInformationElement)knowledgeTable.get(nodeName);

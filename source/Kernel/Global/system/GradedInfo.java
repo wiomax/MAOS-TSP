@@ -11,7 +11,7 @@ import java.util.*;
 import Global.methods.*;
 
 public class GradedInfo {
-  public static Vector exclusiveInfo = new Vector();
+  public static Vector<String> exclusiveInfo = new Vector<String>();
 
   private Object excObj;
   private String addMSG = "";

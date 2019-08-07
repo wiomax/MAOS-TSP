@@ -185,7 +185,7 @@ public class PheromoneHolder extends BasicObject implements IGetProbabiityEngine
   }
 
   private void compute_total_information_at(int i, int j) {
-    totalMatrix[i][j] = Math.pow(pheroMatrix[i][j],alpha) * Math.pow(1.0/localCostEngine.getCostMatrix()[i][j],beta);
+    totalMatrix[i][j] = Math.pow(pheroMatrix[i][j],alpha) * Math.pow(1.0/localCostEngine.getLocalCost(i, j),beta);
     totalMatrix[j][i] = totalMatrix[i][j];
   }
 

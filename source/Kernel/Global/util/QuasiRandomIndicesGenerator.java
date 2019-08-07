@@ -12,7 +12,7 @@ import java.util.*;
 import Global.methods.*;
 
 public class QuasiRandomIndicesGenerator {
-  private Vector indicesArray = new Vector();
+  private Vector<int[]> indicesArray = new Vector<int[]>();
 
   public QuasiRandomIndicesGenerator(int maxNum, int times) {
     this(maxNum, times, 100);
@@ -30,7 +30,7 @@ public class QuasiRandomIndicesGenerator {
   }
 
   public int[] randomDistinctSelection() {
-    return (int[])indicesArray.elementAt(RandomGenerator.intRangeRandom(indicesArray.size()));
+    return indicesArray.elementAt(RandomGenerator.intRangeRandom(indicesArray.size()));
   }
 
 }

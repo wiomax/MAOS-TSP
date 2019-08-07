@@ -154,7 +154,7 @@ public class GlobalFile {
   * @param      fileStr     the name of the file to be loaded.
   * @return  A Vector that include the curve data.
   */
-  public static Vector getCurveDataFromFile(String fileName) {
+  public static Vector<Vector<Double>> getCurveDataFromFile(String fileName) {
     File file = new File(fileName);
     if(!file.exists()){
       //showMessage();
@@ -170,8 +170,8 @@ public class GlobalFile {
       //showMessage();
       return null;//Data file open error.
     }
-    Vector xaxes = new Vector(1,1);
-    Vector yaxes = new Vector(1,1);
+    Vector<Double> xaxes = new Vector<Double>(1,1);
+    Vector<Double> yaxes = new Vector<Double>(1,1);
     try{
       StringTokenizer st;
       String s;
@@ -220,9 +220,12 @@ public class GlobalFile {
       //showMessage();
       return null;//Uncertain data file error.
     }
-    Vector curveData = new Vector();
+    Vector<Vector<Double>> curveData = new Vector<Vector<Double>>();
     curveData.addElement(xaxes);
     curveData.addElement(yaxes);
+    if (inReader!=null) try{
+    	inReader.close();
+    }catch(Exception e){}
     return(curveData);
   }
 

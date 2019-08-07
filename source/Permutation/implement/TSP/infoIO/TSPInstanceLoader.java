@@ -114,7 +114,7 @@ public class TSPInstanceLoader extends AbsFileInstanceLoader {
     }
   }
 
-  private static EUC_TSPData readEUCContent(String[] lines) throws Exception {
+  public static EUC_TSPData readEUCContent(String[] lines) throws Exception {
     EUC_TSPData tspData = new EUC_TSPData();
     readGeneralContent(tspData, lines);
 

@@ -11,7 +11,7 @@ package Global.methods;
 import java.util.*;
 
 public class MultiIDSetManager {
-  private Vector idSetGroup = new Vector();
+  private Vector<int[]> idSetGroup = new Vector<int[]>();
 
   public int[] getIDSetAt(int index) {
     return (int[])idSetGroup.elementAt(index);

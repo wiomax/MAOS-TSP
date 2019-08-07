@@ -10,6 +10,7 @@
 package Global.exception;
 
 
+@SuppressWarnings("serial")
 public class ParamNotFoundException extends Exception {
 
   public ParamNotFoundException(String paramName) {

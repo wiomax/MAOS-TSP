@@ -60,22 +60,19 @@ public class Basic2OPT extends AbsExplicitLocalSearch {
     return true;
   }
 
+  private int[] tour_IDs =   new int[2]; //selected IDs in tour
+  private int[] city_IDs =   new int[2]; //selected nodes
+  private int[] p_tour_IDs = new int[2]; /* ID precessors*/
+  private int[] p_city_IDs = new int[2]; /* node precessors*/
+  private int[] s_tour_IDs = new int[2]; /* ID successors*/
+  private int[] s_city_IDs = new int[2]; /* node successors*/
   public int betterOpt(int[] tour, int[][] distEngine, INeighborEngine neighborEngine) {
-    int execCount = 0;
 
     int n = tour.length;
     DualIAlienArray dpArray = new DualIAlienArray(n);
 
-    int[] tour_IDs = new int[2]; //selected IDs in tour
-    int[] city_IDs = new int[2]; //selected nodes
-    int[] p_tour_IDs = new int[2]; /* ID precessors*/
-    int[] p_city_IDs = new int[2]; /* node precessors*/
-    int[] s_tour_IDs = new int[2]; /* ID successors*/
-    int[] s_city_IDs = new int[2]; /* node successors*/
-
     boolean improvement_flag = true;
 
-    int totalDeltaValue = 0;
     int diffValue = 0;
 
     while (improvement_flag) {
@@ -93,7 +90,7 @@ public class Basic2OPT extends AbsExplicitLocalSearch {
         p_tour_IDs[0] = BasicArray.getPrecessorID(n, tour_IDs[0]);
         p_city_IDs[0] = tour[p_tour_IDs[0]];
 
-        int h = 0; /* Search for one of the h-nearest neighbours */
+        int h = 0; /* Search for one of the h-nearest neighbors */
         int nn_ls0 = neighborEngine.getElementNumberAt(city_IDs[0]);
         while (h < nn_ls0) {
           if (improvement_flag) {
@@ -107,43 +104,27 @@ public class Basic2OPT extends AbsExplicitLocalSearch {
           s_city_IDs[1] = tour[s_tour_IDs[1]];
 
           if (s_tour_IDs[0] != tour_IDs[1] && tour_IDs[0]!= s_tour_IDs[1]) {
-//            diffValue = distEngine.getLocalCost(city_IDs[0], city_IDs[1])
-//                      - distEngine.getLocalCost(city_IDs[0], s_city_IDs[0]);
-//            if (diffValue < 0) {
-//              diffValue += distEngine.getLocalCost(s_city_IDs[0], s_city_IDs[1])
-//                         - distEngine.getLocalCost(city_IDs[1], s_city_IDs[1]);
               diffValue = MutateKnowledge.get2EdgeChangeDiffValue(distEngine,
                                                   city_IDs[0], s_city_IDs[0],
                                                   city_IDs[1], s_city_IDs[1]);
               if (diffValue < 0) {
-                execCount++;
                 interal2Exchange(tour, tour_IDs[0], s_tour_IDs[0], tour_IDs[1], s_tour_IDs[1]);
                 improvement_flag = true;
-                totalDeltaValue+=diffValue;
                 break;
               }
-//            }
           }
           //Backward 2-Opt
           p_tour_IDs[1] = BasicArray.getPrecessorID(n, tour_IDs[1]);
           p_city_IDs[1] = tour[p_tour_IDs[1]];
           if (tour_IDs[0] != p_tour_IDs[1] && p_tour_IDs[0] != tour_IDs[1]) {
-//            diffValue = distEngine.getLocalCost(p_city_IDs[0], p_city_IDs[1])
-//                      - distEngine.getLocalCost(p_city_IDs[0], city_IDs[0]);
-//            if (diffValue < 0) {
-//              diffValue += distEngine.getLocalCost(city_IDs[0], city_IDs[1])
-//                         - distEngine.getLocalCost(p_city_IDs[1], city_IDs[1]);
               diffValue = MutateKnowledge.get2EdgeChangeDiffValue(distEngine,
                                                   p_city_IDs[0], city_IDs[0],
                                                   p_city_IDs[1], city_IDs[1]);
               if (diffValue < 0) {
-                execCount++;
                 interal2Exchange(tour, p_tour_IDs[0], tour_IDs[0], p_tour_IDs[1], tour_IDs[1]);
-                totalDeltaValue+=diffValue;
                 improvement_flag = true;
                 break;
               }
-//            }
           }
 
           h++;
@@ -161,38 +142,4 @@ public class Basic2OPT extends AbsExplicitLocalSearch {
       ArrayOperator.inverseSegment(tour, cityX2BID, cityX1AID);
     }
   }
-
-  //Here minID<maxID
-  private static boolean pureOnce2opt(int[] tour, int[][] distEngine, int minID, int maxID, boolean isSteadyUpdated) {
-    int n = tour.length;
-    int cityX1AID = minID;
-    int cityX1BID = BasicArray.getSuccessorID(n, cityX1AID);
-    int cityX2AID = maxID;
-    int cityX2BID = BasicArray.getSuccessorID(n, cityX2AID);
-
-    boolean isUpdated = !isSteadyUpdated;
-    if (isSteadyUpdated) {
-      int diff = MutateKnowledge.get2EdgeChangeDiffValue(distEngine,
-                 tour[cityX1AID], tour[cityX1BID],
-                 tour[cityX2AID], tour[cityX2BID]);
-      isUpdated = (diff<0);
-    }
-    if (isUpdated) {
-      interal2Exchange(tour, cityX1AID, cityX1BID, cityX2AID, cityX2BID);
-      return true;
-    }
-    return false;
-  }
-
-//  public boolean once2opt(int[] tour, int[][] distEngine, int minV, int maxV, boolean isSteadyUpdated) {
-//    //note: each int in tour[] is an index to an array of city objects
-//    int n = tour.length;
-//    v2[0] = minV;
-//    v2[1] = maxV;
-//    Arrays.sort(v2);
-//    if (v2[1]-v2[0]<2 || v2[1]-v2[0]>n-2) {
-//      return false;
-//    }
-//    return pureOnce2opt(tour, distEngine, v2[0], v2[1], isSteadyUpdated);
-//  }
 }

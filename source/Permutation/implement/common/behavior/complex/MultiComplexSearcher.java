@@ -53,19 +53,21 @@ public class MultiComplexSearcher extends AbsComplexSearch {
     }
     for (int i=0; i<referEngine.getLibSize(); i++) {
       SearchState referState = referEngine.getSelectedPoint(i).getSearchState();
-      for (int j=0; j<referState.getNodeNumber(); j++) {
+      for (int j=0; j<nodeNumber; j++) {
         desireMatrix[j][referState.getValueAt(j)] ++;
       }
     }
   }
 
+  
+  //unfinished
   public boolean generate(EncodedState trialState, EncodedState baseState, IGetEachEncodedStateEngine referEngine) {
     int number = trialState.getSearchState().getNodeNumber();
     if (desireMatrix == null) desireMatrix = new int[number][number];
     calcDesireMatrix(desireMatrix, referEngine);
     
-    int selID = statePicker.pick(referEngine);
-    EncodedState referState = referEngine.getSelectedPoint(selID);
+//    int selID = statePicker.pick(referEngine);
+//    EncodedState referState = referEngine.getSelectedPoint(selID);
     
     return true;
   }

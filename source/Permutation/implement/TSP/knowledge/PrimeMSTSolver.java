@@ -14,7 +14,7 @@
  * [1] K. Helsgaun,"An Effective Implementation of the Lin-Kernighan Traveling
  *  Salesman Heuristic", European J Operational Research 126 (1), 106-130 (2000).
  * [2] R. C. Prim: Shortest connection networks and some generalizations. 
- *     In: Bell System Technical Journal, 36 (1957), pp. 1389Ð1401
+ *     In: Bell System Technical Journal, 36 (1957), pp. 1389-1401
  */
 
 package implement.TSP.knowledge;

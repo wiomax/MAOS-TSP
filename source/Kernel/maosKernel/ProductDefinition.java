@@ -15,11 +15,11 @@ public class ProductDefinition {
   public static final String PRODUCTNAME = "MAOS";
   public static final String PRODUCTDETAILNAME = "Multiagent Optimization System";
   public static final String SubPRODUCTNAME = "The Mini Series";
-  public static final String PRODUCTVERSION = "M01.00.02";
-  public static final String PRODUCTCOPYRIGHT = "Open Source Softeware under GPL License 3.0";
+  public static final String PRODUCTVERSION = "M01.00.04";
+  public static final String PRODUCTCOPYRIGHT = "Creative Commons Non-Commercial License 3.0";
   public static final String PRODUCTOR = "Xiao-Feng Xie";
-  public static final String HOME_ADDR = "http://www.adaptivebox.net/doi/MAOS";
-  public static final String EMAILADDR = "xiexiaofeng@tsinghua.org.cn";
+  public static final String HOME_ADDR = "http://www.wiomax.com/MAOS-TSP/";
+  public static final String EMAILADDR = "info@wiomax.com";
   
   public static void printMAOSHead() {
     GradedOut.showEXTREMEMessage("**********************************************");

@@ -10,6 +10,7 @@
 package Global.exception;
 
 
+@SuppressWarnings("serial")
 public class BasicFileFormatException extends Exception {
 
   public BasicFileFormatException(String paramName) {

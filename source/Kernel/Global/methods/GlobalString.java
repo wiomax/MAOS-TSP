@@ -52,7 +52,7 @@ public class GlobalString {
   public static String[] getAllLines(String srcStr) throws Exception {
     StringReader outStringReader = new StringReader(srcStr);
     BufferedReader outReader = new BufferedReader(outStringReader);
-    Vector origData = new Vector();
+    Vector<String> origData = new Vector<String>();
     String str = null;
     while(true) {
       str = outReader.readLine();
@@ -67,7 +67,7 @@ public class GlobalString {
   public static String[] getMeaningfulLines(String srcStr, String neglectFirstChars) throws Exception {
     StringReader outStringReader = new StringReader(srcStr);
     BufferedReader outReader = new BufferedReader(outStringReader);
-    Vector origData = new Vector();
+    Vector<String> origData = new Vector<String>();
     String str = null;
     while(true) {
       str = getMeaningfulLine(outReader, neglectFirstChars);
@@ -82,7 +82,7 @@ public class GlobalString {
   public static String[] getAcceptMeaningfulLines(String srcStr, String acceptFirstChars) throws Exception {
     StringReader outStringReader = new StringReader(srcStr);
     BufferedReader outReader = new BufferedReader(outStringReader);
-    Vector origData = new Vector();
+    Vector<String> origData = new Vector<String>();
     String str = null;
     while(true) {
       str = getMeaningfulLine(outReader, "");
@@ -180,7 +180,7 @@ public class GlobalString {
     return str;
   }
 
-  public static String serinize(Vector data, String seriKey) {
+  public static String serinize(Vector<? extends Object> data, String seriKey) {
     String str = "";
     for (int i=0; i<data.size(); i++) {
       if(i!=0) {
@@ -218,7 +218,7 @@ public class GlobalString {
    * divided by the tokenKey.
    */
   public static String[] tokenize(String input , String tokenKey, int maxSize) {
-    Vector v = new Vector();
+    Vector<Object> v = new Vector<Object>();
     StringTokenizer t = new StringTokenizer(input, tokenKey);
     String cmd[];
     int size = 0;
@@ -241,7 +241,7 @@ public class GlobalString {
   public static String[] tokenize(String input, String normalTokenKey, String importantTokenKey) {
     String str = input.trim();
     int index1, index2;
-    Vector v = new Vector();
+    Vector<String> v = new Vector<String>();
     do {
       index1 = StringSearch.getTokenLoc(str, importantTokenKey);
       if(index1==-1||index1==str.length()) {
@@ -269,7 +269,7 @@ public class GlobalString {
       }
     } while (true);
 
-    Vector realV = new Vector();
+    Vector<String> realV = new Vector<String>();
     for(int i=0; i<v.size(); i++) {
       String subElem = v.elementAt(i).toString();
       if (subElem.equalsIgnoreCase("")) {

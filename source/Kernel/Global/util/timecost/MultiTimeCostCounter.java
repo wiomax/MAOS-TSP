@@ -11,7 +11,7 @@ import java.util.*;
 
 public class MultiTimeCostCounter {
   private static final String DEFAULT_KEY = "DefaultKey";
-  private Hashtable costCounterTable = new Hashtable();
+  private Hashtable<String, Object> costCounterTable = new Hashtable<String, Object>();
   private boolean isCPUTime = false;
 
   public MultiTimeCostCounter(){}
@@ -80,7 +80,7 @@ public class MultiTimeCostCounter {
   }
 
   public void printSelf() {
-    Enumeration counters = costCounterTable.keys();
+    Enumeration<?> counters = costCounterTable.keys();
     System.out.println("@@@ TimeCostCounter @@@");
     while(counters.hasMoreElements()) {
       String key = counters.nextElement().toString();

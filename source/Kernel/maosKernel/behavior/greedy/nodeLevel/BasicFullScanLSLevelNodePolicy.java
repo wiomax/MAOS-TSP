@@ -10,7 +10,7 @@
  * 
  * @Reference
  * [1] Taillard ED. FANT: Fast ant system. Technical Report, IDSIA-46-98, Lugano: IDSIA, 1998.
- * [2] Thomas Stützle, Marco Dorigo. ACO algorithms for the quadratic assignment problem.
+ * [2] Thomas Stutzle, Marco Dorigo. ACO algorithms for the quadratic assignment problem.
  *     New Ideas in Optimization, 1999
  */
 

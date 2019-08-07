@@ -2,28 +2,18 @@
  * @Description: The main entrance for the MAOS
  *
  * @General_Information
- *  Portal: http://www.adaptivebox.net/doi/MAOS
- *  E-MAIL: maos@adaptivebox.net
+ *  Portal: http://www.wiomax.com/MAOS-TSP/
+ *  E-MAIL: info@wiomax.com
  *
  * @ Author        Create/Modi     Note
  * Xiaofeng Xie    Apr 28, 2006
  * Xiaofeng Xie    Aug 21, 2008    MAOS M01.00.00
+ * Xiaofeng Xie    Dec 01, 2014    MAOS M01.00.03
  *
  * @version: see maosKernel.ProductDefinition.java
  * 
- * @License
- *******************************************************************
- * MAOS is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3.0 of the License, or (at your option) any later version.
- *
- * MAOS is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License 3.0 for more details.
- *
- * Please acknowledge the author(s) if you use this code in any way.
+ * @License: See the Creative Commons Non-Commercial License 3.0 for more details.
+ *           Please acknowledge the author(s) if you use this code in any way.
  *******************************************************************
  *
  * @Reference
@@ -40,29 +30,36 @@
  * [4] Xiao-Feng Xie, Jiming Liu. A mini-swarm for the quadratic knapsack
  *     problem. IEEE Swarm Intelligence Symposium (SIS), Hawaii, USA, 2007.
  * [5] Xiao-Feng Xie, Jiming Liu. Graph coloring by multiagent fusion search. 
- *     Journal of Combinatorial Optimization, In Press.
+ *     Journal of Combinatorial Optimization, 2009, 18(2): 99-123. 
  * [6] Xiao-Feng Xie, Jiming Liu. Multiagent optimization system for solving the traveling 
  *     salesman problem (TSP). IEEE Transactions on Systems, Man, and Cybernetics - Part B, 
  *     2009, 39(2): 489-502 
+ * [7] Xiao-Feng Xie. Round-table group optimization for sequencing problems. International 
+ *     Journal of Applied Metaheuristic Computing, 2012, 3(4): 1-24.
+ * [8] Xiao-Feng Xie, Jiming Liu, Zun-Jing Wang. A cooperative group optimization system. 
+ *     Soft Computing, 2014, 18(3): 469-495.    
  */
 
 package maosKernel;
 
-import java.util.*;
+import java.util.Calendar;
 
-import Global.define.*;
-import Global.util.*;
-import Global.system.*;
-import Global.methods.*;
-
-import maosKernel.infoIO.*;
-import maosKernel.infoIO.runtime.*;
-import maosKernel.infoIO.setting.*;
-import maosKernel.infoIO.screen.*;
-import maosKernel.infoIO.historical.*;
-import maosKernel.represent.landscape.*;
-import maosKernel.represent.problem.*;
-import maosKernel.behavior.topology.*;
+import maosKernel.behavior.topology.AbsTopology;
+import maosKernel.infoIO.OutputIntervalChecker;
+import maosKernel.infoIO.ResultOutputHandler;
+import maosKernel.infoIO.historical.HistoricalStateHandler;
+import maosKernel.infoIO.runtime.CycleResult;
+import maosKernel.infoIO.screen.MessageTags;
+import maosKernel.infoIO.setting.BasicParamHolder;
+import maosKernel.infoIO.setting.CMDLineProblemSettings;
+import maosKernel.infoIO.setting.SwarmSettings;
+import maosKernel.infoIO.setting.SystemSettingPath;
+import maosKernel.represent.landscape.AbsLandscape;
+import maosKernel.represent.problem.AbsProblemData;
+import Global.define.BasicTag;
+import Global.methods.ObjectMatrix;
+import Global.system.GradedOut;
+import Global.util.GlobalTools;
 
 public final class MAOSExecuter {
 
@@ -164,6 +161,7 @@ public final class MAOSExecuter {
     GradedOut.showNORMALMessage(MessageTags.MSGTAG_ACTION_NORM+"Retrieve history solution information in $SOL_PATH");
     HistoricalStateHandler historicalStateHandler = new HistoricalStateHandler(virtualLandscape, maosInitializer.getSolutionIOHandler(), paramHolder.prjIOPath);
     historicalStateHandler.setLowerBound(maosInitializer.getLowerBound());
+    historicalStateHandler.setOptimalBound(swarmSettings.opt);
     GradedOut.showNORMALMessage(historicalStateHandler.printKnownSolutionInfo());
     
     //For output result in runs
@@ -227,10 +225,10 @@ public final class MAOSExecuter {
     }
   }
 
-  private AbsMAOSInitializer loadProblemType(String problemType) throws Exception {
+  public static AbsMAOSInitializer loadProblemType(String problemType) throws Exception {
     String initializerName = SystemSettingPath.getInitializerName(problemType);
     try {
-      Class cls = Class.forName(initializerName);
+      Class<?> cls = Class.forName(initializerName);
       return (AbsMAOSInitializer)cls.newInstance();
     } catch (Exception e) {
       throw new Exception("Problem type \""+problemType+"\" specified by the first parameter could not be found: "+e.getMessage());

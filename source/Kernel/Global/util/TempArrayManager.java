@@ -10,7 +10,7 @@ package Global.util;
 import java.util.*;
 
 public class TempArrayManager {
-  private static Hashtable tempArrayTable = new Hashtable();
+  private static Hashtable<String, Object> tempArrayTable = new Hashtable<String, Object>();
 
   public static int[] getTempIntArray(int size) {
     int[] iArray = (int[])tempArrayTable.get("i"+new Integer(size).toString());
